@@ -1,9 +1,18 @@
-import QtQuick
-import QtQuick.Window
+import QtQuick 2.12
+import QtQuick.Window 2.12
 
 Window {
-    width: 640
-    height: 480
+    width: 1366
+    height: 720
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Game")
+
+    GameField{
+        height: parent.height-60
+        width: height
+        anchors.centerIn: parent
+        homeSpacing: 8
+        homeSideCount: 6
+    }
+
 }

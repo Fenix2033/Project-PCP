@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>HomeTile.qml</file>
+        <file>images/home.png</file>
+        <file>GameField.qml</file>
     </qresource>
 </RCC>
