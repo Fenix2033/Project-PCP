@@ -4,7 +4,7 @@ Rectangle {
     id: homeField
     property int homeSideCount: 5
     property alias homeSpacing: homeGrid.spacing
-    color: "lightgray"
+    color: "black"
 
     Grid{
         x: homeSpacing

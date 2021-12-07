@@ -10,7 +10,7 @@ SOURCES += \
         building.cpp \
         errorloger.cpp \
         filemanager.cpp \
-        grid.cpp \
+        game.cpp \
         main.cpp
 
 RESOURCES += qml.qrc \
@@ -28,12 +28,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    Position.h \
     building.h \
     errorloger.h \
     filemanager.h \
-    grid.h
+    game.h \
+    position.h
 
 DISTFILES += \
-    GameField.qml \
-    HomeTile.qml
+    save.xml

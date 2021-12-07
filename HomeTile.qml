@@ -19,7 +19,7 @@ Rectangle{
             }
         },
         State {
-            name: "revealed"
+            name: "boom"
             PropertyChanges {
                 target: homeImg
                 opacity: 100
@@ -56,9 +56,14 @@ Rectangle{
         hoverEnabled: true
 
         onClicked: {
-            homeTile.state = "revealed"
-            homeTile.previousState = homeTile.state
 
+            var buildingCount = game.getBuildingCount(tileIndex)
+            if (buildingCount == 1){
+                HomeTile.state = "boom"
+                HomeTile.previousState = HomeTile.state
+            } else {
+                label.text = buildingCount
+            }
         }
 
         onEntered: {

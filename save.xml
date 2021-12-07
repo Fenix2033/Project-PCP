@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mines>
+    <field index="0">0</field>
+    <field index="1">0</field>
+    <field index="2">0</field>
+    <field index="3">0</field>
+    <field index="4">0</field>
+    <field index="5">0</field>
+
+    <field index="6">1</field>
+    <field index="7">1</field>
+    <field index="8">2</field>
+    <field index="9">1</field>
+    <field index="10">1</field>
+    <field index="11">0</field>
+
+    <field index="12">1</field>
+    <field index="13">9</field>
+    <field index="14">2</field>
+    <field index="15">9</field>
+    <field index="16">1</field>
+    <field index="17">0</field>
+
+    <field index="18">1</field>
+    <field index="19">1</field>
+    <field index="20">2</field>
+    <field index="21">1</field>
+    <field index="22">1</field>
+    <field index="23">0</field>
+
+    <field index="24">0</field>
+    <field index="25">0</field>
+    <field index="26">0</field>
+    <field index="27">0</field>
+    <field index="28">0</field>
+    <field index="29">0</field>
+
+    <field index="30">0</field>
+    <field index="31">0</field>
+    <field index="32">0</field>
+    <field index="33">0</field>
+    <field index="34">0</field>
+    <field index="35">0</field>
+</mines>
