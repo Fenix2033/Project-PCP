@@ -11,8 +11,9 @@ Window {
         height: parent.height-60
         width: height
         anchors.centerIn: parent
-        homeSpacing: 8
-        homeSideCount: 6
+        homeSpacing: 5
+        homeSideCount: 5
+
     }
 
 }

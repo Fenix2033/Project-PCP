@@ -1,32 +1,21 @@
 import QtQuick 2.0
 
 Rectangle{
-    property alias tileIndex: label.text
     property string previousState: ""
     id: homeTile
     width: 60
     height: 60
     border.width: 3
-    border.color: "black"
-    color: "grey"
+    border.color: "brown"
+    color: "brown"
     radius: 4
+
     states: [
         State {
-            name: "hovered"
-            PropertyChanges {
-                target: homeTile
-                border.color: "white"
-            }
-        },
-        State {
-            name: "boom"
+            name: "revealed"
             PropertyChanges {
                 target: homeImg
                 opacity: 100
-            }
-            PropertyChanges {
-                target: label
-                opacity: 0
             }
         }
     ]
@@ -40,39 +29,15 @@ Rectangle{
         anchors.centerIn: parent
     }
 
-    Text {
-        id: label
-        text: "0"
-        font {
-            pixelSize: 24
-            bold: true
-        }
-        color: "white"
-        anchors.centerIn: parent
-    }
-
     MouseArea{
         anchors.fill: parent
         hoverEnabled: true
 
         onClicked: {
-
-            var buildingCount = game.getBuildingCount(tileIndex)
-            if (buildingCount == 1){
-                HomeTile.state = "boom"
-                HomeTile.previousState = HomeTile.state
-            } else {
-                label.text = buildingCount
-            }
-        }
-
-        onEntered: {
-            homeTile.state = "hovered"
+            homeTile.state = "revealed"
             homeTile.previousState = homeTile.state
+
         }
 
-        onExited: {
-            homeTile.state = homeTile.previousState
-        }
     }
 }

@@ -14,6 +14,7 @@ SOURCES += \
         main.cpp
 
 RESOURCES += qml.qrc \
+            save.xml
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model

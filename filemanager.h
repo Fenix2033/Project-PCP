@@ -13,6 +13,7 @@ public:
     FileManager();
 
     static std::vector<int> loadXml();
+    static std::vector<int> writeXml();
 };
 
 #endif // FILEMANAGER_H
