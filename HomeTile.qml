@@ -7,15 +7,15 @@ Rectangle{
     width: 60
     height: 60
     border.width: 3
-    border.color: "steelblue"
-    color: "steelblue"
+    border.color: "black"
+    color: "grey"
     radius: 4
     states: [
         State {
             name: "hovered"
             PropertyChanges {
                 target: homeTile
-                border.color: "lightblue"
+                border.color: "white"
             }
         },
         State {
