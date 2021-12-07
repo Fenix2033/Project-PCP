@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Rectangle{
+    property alias tileIndex: label.text
     property string previousState: ""
     id: homeTile
     width: 60
@@ -9,6 +10,9 @@ Rectangle{
     border.color: "brown"
     color: "brown"
     radius: 4
+
+//    var buildingCount = game.getBuildingCount(tileIndex)
+
 
     states: [
         State {
@@ -29,6 +33,18 @@ Rectangle{
         anchors.centerIn: parent
     }
 
+    Text {
+        id: label
+        text: "0"
+        opacity: 0
+        font {
+            pixelSize: 24
+            bold: true
+        }
+        color: "white"
+        anchors.centerIn: parent
+    }
+
     MouseArea{
         anchors.fill: parent
         hoverEnabled: true
@@ -36,8 +52,6 @@ Rectangle{
         onClicked: {
             homeTile.state = "revealed"
             homeTile.previousState = homeTile.state
-
         }
-
     }
 }

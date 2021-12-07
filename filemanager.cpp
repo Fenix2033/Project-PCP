@@ -25,7 +25,7 @@ std::vector<int> FileManager::loadXml(){
                     int index = xmlReader.attributes().value("index").toInt();
                     int buildingCount = xmlReader.readElementText().toInt();
                     building.at(index) = buildingCount;
-                } else if (name == "mines"){
+                } else if (name == "building"){
                     // skip
                 } else {
                     qCritical() << "Not element field" << name <<"\n";

@@ -18,6 +18,7 @@ Rectangle {
             model: homeSideCount*homeSideCount
 
             HomeTile{
+                tileIndex: index
                 width: (homeField.width/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
                 height: (homeField.height/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
 
