@@ -27,7 +27,7 @@ std::vector<int> FileManager::loadXml(){
                     int buildingCount = xmlReader.readElementText().toInt();
                     building.at(index) = buildingCount;
                 } else if (name == "building"){
-                    // skip
+
                 } else {
                     qCritical() << "Not element field" << name <<"\n";
                 }
@@ -38,6 +38,8 @@ std::vector<int> FileManager::loadXml(){
     } else {
         qCritical() << "File is not open\n";
     }
+
+
 
     file.close();
     return building;
@@ -52,12 +54,16 @@ std::vector<int> FileManager::writeXml(){
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartElement("building");
         for (auto i : building){
-            int field = building.at(i);
+            int buildingType = building.at(i);
             xmlWriter.writeStartElement("field");
- //           xmlWriter.writeAttribute("index", building.at(i).field);
+            xmlWriter.writeAttribute("index", "buildingType");
             xmlWriter.writeEndElement();
         }
-    }
+    } else {
+          qCritical() << "File is not open\n";
+     }
+
+     file.close();
 }
 static std::vector<int> saveXml()
 {
