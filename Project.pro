@@ -12,7 +12,8 @@ SOURCES += \
         errorloger.cpp \
         filemanager.cpp \
         game.cpp \
-        main.cpp
+        main.cpp \
+        player.cpp
 
 RESOURCES += qml.qrc \
             save.xml
@@ -35,6 +36,7 @@ HEADERS += \
     errorloger.h \
     filemanager.h \
     game.h \
+    player.h \
     position.h
 
 DISTFILES += \
