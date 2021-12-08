@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QDebug>
 #include <vector>
+#include "game.h"
 
 class FileManager
 {

@@ -1,8 +1,10 @@
+
 import QtQuick 2.0
 
 Rectangle{
     property int tileIndex: 0
     property int homeSideCount: 5
+    property int buildingCount: 0
 
     id: homeTile
     width: 60
@@ -12,18 +14,11 @@ Rectangle{
     color: "brown"
     radius: 4
 
-    Repeater{
-        model: homeSideCount*homeSideCount
+    anchors.fill:
 
-        property int buildingCount: game.getBuildingCount(tileIndex)
-
-        anchors.fill:
-
-        if (buildingCount === 1){
-            homeTile.state = "revealed"
-        }
-    }
-
+     if (buildingCount === 1){
+        homeTile.state = "revealed"
+    } else if (buildingCount === 0){}
 
     Image {
         id: homeImg
@@ -52,7 +47,7 @@ Rectangle{
 
         onClicked: {
             homeTile.state = "revealed"
-
+            game.setBuilding(tileIndex, 1)
         }
     }
 
@@ -66,3 +61,6 @@ Rectangle{
     }
   ]
 }
+
+
+

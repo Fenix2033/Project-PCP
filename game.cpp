@@ -10,3 +10,7 @@ Game::Game(QObject *parent) : QObject(parent)
 int Game::getBuildingCount(int index){
     return m_building.at(index);
 }
+
+void Game::setBuilding(int index, int buildingN){
+    m_building.at(index) = buildingN;
+}

@@ -14,7 +14,7 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Q_INVOKABLE int getBuildingCount(int index);
-
+    Q_INVOKABLE void setBuilding(int index, int buildingN);
 signals:
 
 private:

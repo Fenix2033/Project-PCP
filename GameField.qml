@@ -5,7 +5,6 @@ Rectangle {
     id: homeField
     property int homeSideCount: 5
     property alias homeSpacing: homeGrid.spacing
-    property int i: 0
 
     color: "black"
 
@@ -21,13 +20,13 @@ Rectangle {
             model: homeSideCount*homeSideCount
 
             HomeTile{
-
                 tileIndex: index
+                buildingCount: game.getBuildingCount(index)
                 width: (homeField.width/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
                 height: (homeField.height/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
-            }
+
 
         }
     }
-
+}
 }
