@@ -11,5 +11,4 @@ int Game::getBuildingCount(int index){
 
 void Game::setBuilding(int index, int buildingN){
     m_building.at(index) = buildingN;
-    FileManager::writeXml();
 }
