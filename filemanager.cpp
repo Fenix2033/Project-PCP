@@ -36,7 +36,7 @@ std::vector<int> FileManager::loadXml(){
             xmlReader.readNext();
         }
     } else {
-        qCritical() << "File is not opne\n";
+        qCritical() << "File is not open\n";
     }
 
     file.close();
