@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
     context->setContextProperty("game", &game);
     engine.load(url);
 
-    // FileManager::writeXml();
-
     return app.exec();
 }
 
