@@ -59,4 +59,18 @@ std::vector<int> FileManager::writeXml(){
         }
     }
 }
+static std::vector<int> saveXml()
+{
+    //QString filename = QFileDialog::getSaveFileName//
 
+	QFile file(":/save.xml");
+	file.open(QIODevice::WriteOnly);
+
+	QXmlStreamWriter xmlWriter(&file);
+	xmlWriter.setAutoFormatting(true);
+	xmlWriter.writeStartDocument();
+	xmlWriter.writeStartElement("building");
+	xmlWriter.writeEndElement();
+
+        file.close();
+}
