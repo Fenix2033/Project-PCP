@@ -6,7 +6,7 @@ FileManager::FileManager()
 }
 
 std::vector<int> FileManager::loadXml(){
-    std::vector<int> building(36, 0);
+    std::vector<int> building(30, 0);
 
    QFile file(":/save.xml");
 

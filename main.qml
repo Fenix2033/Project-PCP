@@ -15,5 +15,4 @@ Window {
         homeSideCount: 5
 
     }
-
 }

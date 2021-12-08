@@ -1,8 +1,9 @@
 import QtQuick 2.0
 
 Rectangle{
-    property alias tileIndex: label.text
-    property string previousState: ""
+    property int tileIndex: 0
+    property int homeSideCount: 5
+
     id: homeTile
     width: 60
     height: 60
@@ -11,18 +12,18 @@ Rectangle{
     color: "brown"
     radius: 4
 
-//    var buildingCount = game.getBuildingCount(tileIndex)
+    Repeater{
+        model: homeSideCount*homeSideCount
 
+        property int buildingCount: game.getBuildingCount(tileIndex)
 
-    states: [
-        State {
-            name: "revealed"
-            PropertyChanges {
-                target: homeImg
-                opacity: 100
-            }
+        anchors.fill:
+
+        if (buildingCount === 1){
+            homeTile.state = "revealed"
         }
-    ]
+    }
+
 
     Image {
         id: homeImg
@@ -51,7 +52,17 @@ Rectangle{
 
         onClicked: {
             homeTile.state = "revealed"
-            homeTile.previousState = homeTile.state
+
         }
     }
+
+    states: [
+        State {
+            name: "revealed"
+            PropertyChanges {
+            target: homeImg
+            opacity: 100
+        }
+    }
+  ]
 }
