@@ -21,7 +21,7 @@ Rectangle {
 
             HomeTile{
                 tileIndex: index
-                buildingCount: game.getBuildingCount(index)
+                buildingCount: game.getBuildingCount(tileIndex)
                 width: (homeField.width/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
                 height: (homeField.height/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
 

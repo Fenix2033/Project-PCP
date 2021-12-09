@@ -39,13 +39,11 @@ std::vector<int> FileManager::loadXml(){
         qCritical() << "File is not open\n";
     }
 
-
-
     file.close();
     return building;
 }
 
-std::vector<int> FileManager::writeXml(){
+void FileManager::writeXml(){
     QFile file(":/save.xml");
 
      if(file.open(QIODevice::WriteOnly)){
@@ -64,19 +62,4 @@ std::vector<int> FileManager::writeXml(){
      }
 
      file.close();
-}
-static std::vector<int> saveXml()
-{
-    //QString filename = QFileDialog::getSaveFileName//
-
-	QFile file(":/save.xml");
-	file.open(QIODevice::WriteOnly);
-
-	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);
-	xmlWriter.writeStartDocument();
-	xmlWriter.writeStartElement("building");
-	xmlWriter.writeEndElement();
-
-        file.close();
 }

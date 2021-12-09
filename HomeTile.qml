@@ -4,7 +4,7 @@ import QtQuick 2.0
 Rectangle{
     property int tileIndex: 0
     property int homeSideCount: 5
-    property int buildingCount: 0
+    property int buildingCount: tileIndex
 
     id: homeTile
     width: 60
@@ -14,11 +14,17 @@ Rectangle{
     color: "brown"
     radius: 4
 
-    anchors.fill:
+    anchors.left:
 
      if (buildingCount === 1){
         homeTile.state = "revealed"
     } else if (buildingCount === 0){}
+
+//    function(buildingCount){
+//        if (buildingCount === 1){
+//           homeTile.state = "revealed"
+//       } else if (buildingCount === 0){}
+//    }
 
     Image {
         id: homeImg
