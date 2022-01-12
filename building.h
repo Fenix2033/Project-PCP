@@ -6,15 +6,16 @@
 class Building
 {
 private:
-QString m_type;
+int m_type;
 int m_priceMoney;
 int m_priceResource;
 int m_profit;
 
 public:
     Building();
-    QString getType();
+    int getType();
     void setPosition(int x, int y);
+    void setType(int type);
 };
 
 #endif // BUILDING_H

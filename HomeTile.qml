@@ -13,14 +13,13 @@ Rectangle{
     border.color: "brown"
     color: "brown"
     radius: 4
+    state: {
+        if (buildingCount === 1){
+            state = 'revealed'
+       } else if (buildingCount === 0){}
+    }
 
-    anchors.left:
-
-     if (buildingCount === 1){
-        homeTile.state = "revealed"
-    } else if (buildingCount === 0){}
-
-//    function(buildingCount){
+//    function fillHome(buildingCount){
 //        if (buildingCount === 1){
 //           homeTile.state = "revealed"
 //       } else if (buildingCount === 0){}

@@ -4,5 +4,6 @@
         <file>HomeTile.qml</file>
         <file>images/home.png</file>
         <file>GameField.qml</file>
+        <file>NewGame.qml</file>
     </qresource>
 </RCC>

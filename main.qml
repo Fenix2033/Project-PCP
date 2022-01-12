@@ -16,5 +16,16 @@ Window {
 
     }
 
+    NewGame {
+        id: buttonNewGame
+        title: "New game"
+        anchors {
+            left: parent.left
+            top: parent.top
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
 }
 
