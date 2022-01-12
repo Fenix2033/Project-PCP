@@ -27,5 +27,16 @@ Window {
         }
     }
 
+    Player {
+        id: player
+        anchors {
+            left: parent.left
+            top: buttonNewGame.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+
 }
 

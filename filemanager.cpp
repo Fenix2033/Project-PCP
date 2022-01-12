@@ -7,8 +7,9 @@ FileManager::FileManager()
 
 std::vector<int> building(30, 0);
 std::vector<Building> m_buildings(30, Building());
+Player m_player;
 
-std::vector<int> FileManager::loadXml(){
+std::vector<Building> FileManager::loadBuildings(){
 
    QFile file(":/save.xml");
 
@@ -26,7 +27,6 @@ std::vector<int> FileManager::loadXml(){
 
                     int index = xmlReader.attributes().value("index").toInt();
                     int buildingCount = xmlReader.readElementText().toInt();
-                    building.at(index) = buildingCount;
                     m_buildings.at(index).setType(buildingCount);
                 } else if (name == "building"){
 
@@ -42,11 +42,48 @@ std::vector<int> FileManager::loadXml(){
     }
 
     file.close();
-    return building;
+    return m_buildings;
 }
 
 std::vector<Building> FileManager::getBuildings(){
     return m_buildings;
+}
+
+Player FileManager::loadPlayer(){
+
+    QFile file(":/savePlayer.xml");
+
+ if (file.open(QIODevice::ReadOnly)){
+
+    QXmlStreamReader xmlReader;
+    xmlReader.setDevice(&file);
+    xmlReader.readNext();
+    int index = 0;
+
+    while(!xmlReader.isEndDocument()){
+
+        if (xmlReader.isStartElement()){
+            QString name = xmlReader.name().toString();
+            if (name == "resource"){
+                int resourceCount = xmlReader.readElementText().toInt();
+                m_player.setResources(index, resourceCount);
+                index++;
+            } else if (name == "Player"){
+
+            } else {
+                qCritical() << "Not element field" << name <<"\n";
+            }
+        }
+
+        xmlReader.readNext();
+    }
+} else {
+    qCritical() << "File is not open\n";
+}
+
+
+     file.close();
+     return m_player;
 }
 
 void FileManager::writeXml(int index, int buildingN){

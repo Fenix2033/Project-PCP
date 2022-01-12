@@ -5,12 +5,13 @@ Player::Player()
 
 }
 
-void Player::setMoney(int money){
-
+int Player::getResources(int index){
+    return m_resources.at(index);
 }
-void Player::setWood(int wood){
 
+void Player::setResources(int index, int count){
+    m_resources.at(index) = count;
 }
-void Player::setStone(int stone){
 
-}
+
+

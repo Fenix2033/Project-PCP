@@ -2,12 +2,17 @@
 
 Game::Game(QObject *parent) : QObject(parent)
 {
-    m_building = FileManager::loadXml();
-    m_buildings = FileManager::getBuildings();
+    m_buildings = FileManager::loadBuildings();
+    m_player = FileManager::loadPlayer();
 }
 
 int Game::getBuildingCount(int index){
-    return m_building.at(index);
+    return m_buildings.at(index).getType();
+}
+
+int Game::getResources(int index){
+    int resource = m_player.getResources(index);
+    return resource;
 }
 
 void Game::setBuilding(int index, int buildingN){
@@ -17,7 +22,6 @@ void Game::setBuilding(int index, int buildingN){
 
 void Game::newGame(){
     FileManager::newGame();
-    m_building = FileManager::loadXml();
     m_buildings = FileManager::getBuildings();
     exit(0);
 }

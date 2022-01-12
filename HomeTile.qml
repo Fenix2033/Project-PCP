@@ -13,17 +13,6 @@ Rectangle{
     border.color: "brown"
     color: "brown"
     radius: 4
-    state: {
-        if (buildingCount === 1){
-            state = 'revealed'
-       } else if (buildingCount === 0){}
-    }
-
-//    function fillHome(buildingCount){
-//        if (buildingCount === 1){
-//           homeTile.state = "revealed"
-//       } else if (buildingCount === 0){}
-//    }
 
     Image {
         id: homeImg
@@ -51,20 +40,35 @@ Rectangle{
         hoverEnabled: true
 
         onClicked: {
-            homeTile.state = "revealed"
+            homeTile.state = "simpleBuilding"
             game.setBuilding(tileIndex, 1)
         }
     }
 
     states: [
         State {
-            name: "revealed"
+            name: "simpleBuilding"
             PropertyChanges {
             target: homeImg
             opacity: 100
+            }
+        },
+
+        State {
+            name: "field"
+            PropertyChanges {
+            }
+       }
+
+  ]
+
+    state: {
+        if (buildingCount === 1){
+            state: "simpleBuilding"
+       } else if (buildingCount === 0){
+            state: "field"
         }
     }
-  ]
 }
 
 

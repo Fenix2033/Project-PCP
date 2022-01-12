@@ -10,15 +10,17 @@
 #include <array>
 #include "game.h"
 #include "building.h"
+#include "player.h"
 
 class FileManager
 {
 public:
     FileManager();
 
-    static std::vector<int> loadXml();
+    static std::vector<Building> loadBuildings();
     static void writeXml(int index, int buildingN);
     static std::vector<Building> getBuildings();
+    static Player loadPlayer();
     static void newGame();
 };
 

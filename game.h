@@ -5,6 +5,7 @@
 #include <vector>
 #include "filemanager.h"
 #include "building.h"
+#include "player.h"
 #include "position.h"
 
 
@@ -16,11 +17,12 @@ public:
     Q_INVOKABLE int getBuildingCount(int index);
     Q_INVOKABLE void setBuilding(int index, int buildingN);
     Q_INVOKABLE void newGame();
+    Q_INVOKABLE int getResources(int index);
 signals:
 
 private:
-    std::vector<int> m_building;
     std::vector<Building> m_buildings;
+    Player m_player;
 public:
 };
 

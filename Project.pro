@@ -21,7 +21,8 @@ SOURCES += \
         sawmill.cpp
 
 RESOURCES += qml.qrc \
-            save.xml
+            save.xml \
+            savePlayer.xml
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -50,4 +51,5 @@ HEADERS += \
     sawmill.h
 
 DISTFILES += \
-    save.xml
+    save.xml \
+    savePlayer.xml

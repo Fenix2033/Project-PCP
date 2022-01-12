@@ -4,23 +4,17 @@
 #include <QString>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <array>
 
 class Player
 {
 private:
-    int m_money;
-    int m_wood;
-    int m_stone;
+    std::array<int, 3> m_resources;
 public:
     Player();
-    Player(int money, int wood, int stone);
 
-    int getMoney();
-    int getWood();
-    int getStone();
-    void setMoney(int money);
-    void setWood(int wood);
-    void setStone(int stone);
+    int getResources(int index);
+    void setResources(int index, int count);
 };
 
 #endif // PLAYER_H
