@@ -19,6 +19,7 @@ Rectangle {
 
 
     states: [
+
         State {
             name: "newGame"
             PropertyChanges {
@@ -26,14 +27,23 @@ Rectangle {
                 color: "black"
             }
         },
+
         State {
             name: "exit"
             PropertyChanges {
                 target: button
                 color: "red"
             }
+        },
+
+        State {
+            name: "skipTurn"
+            PropertyChanges {
+                target: button
+                color: "magenta"
         }
-    ]
+      }
+   ]
 
 
     MouseArea{
@@ -41,11 +51,15 @@ Rectangle {
         hoverEnabled: true
 
         onClicked: {
-            if (button.state == "newGame"){
+            if (button.state === "newGame"){
                 game.newGame()
             }
-            else if (button.state == "exit"){
+            else if (button.state === "exit"){
                 game.gameExit();
+            }
+            else if (button.state === "skipTurn"){
+                game.skipTurn();
+                player.fillPlayer();
             } else {
 
             }

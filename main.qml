@@ -9,11 +9,12 @@ Window {
     title: qsTr("Game")
 
     GameField{
+        id: gameField
         height: parent.height-60
         width: height
         anchors.centerIn: parent
-        homeSpacing: 5
-        homeSideCount: 5
+        buildingSpacing: 5
+        buildingSideCount: 5
 
     }
 
@@ -41,11 +42,23 @@ Window {
         }
     }
 
+    Button {
+        id: buttonSkipTurn
+        title: "Skip Turn"
+        state: "skipTurn"
+        anchors {
+            left: parent.left
+            top: buttonExit.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
     Player {
         id: player
         anchors {
             left: parent.left
-            top: buttonExit.bottom
+            top: buttonSkipTurn.bottom
             leftMargin: 0
             topMargin: 0
         }

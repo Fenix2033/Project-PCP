@@ -2,30 +2,41 @@
 import QtQuick 2.0
 
 Rectangle {
-    id: homeField
-    property int homeSideCount: 5
-    property alias homeSpacing: homeGrid.spacing
+
+    property int buildingSideCount: 5
+    property alias buildingSpacing: homeGrid.spacing
 
     color: "black"
 
     Grid{
-        x: homeSpacing
-        y: homeSpacing
+        x: buildingSpacing
+        y: buildingSpacing
         id: homeGrid
-        columns: homeSideCount
+        columns: buildingSideCount
         spacing: 10
 
 
         Repeater{
-            model: homeSideCount*homeSideCount
+            id: repeaterBuilding
+            model: buildingSideCount*buildingSideCount
 
-            HomeTile{
+            BuildingTile{
+                id: repeaterBuildingTile
                 tileIndex: index
                 buildingCount: game.getBuildingCount(tileIndex)
-                width: (homeField.width/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
-                height: (homeField.height/homeSideCount)-(homeSpacing/(homeSideCount-1)*homeSideCount)
+                width: (gameField.width/buildingSideCount)-(buildingSpacing/(buildingSideCount-1)*buildingSideCount)
+                height: (gameField.height/buildingSideCount)-(buildingSpacing/(buildingSideCount-1)*buildingSideCount)
 
+            }
         }
+
+        function fillField(){
+            for(var i = 0; i <= buildingSideCount*buildingSideCount; i++){
+                repeaterBuildingTile.buildingCount = game.getBuildingCount(i)
+            }
+
+            }
     }
-}
-}
+
+
+   }

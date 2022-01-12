@@ -3,10 +3,10 @@ import QtQuick 2.0
 
 Rectangle{
     property int tileIndex: 0
-    property int homeSideCount: 5
+    property int buildingSideCount: 5
     property int buildingCount: tileIndex
 
-    id: homeTile
+    id: buildingTile
     width: 60
     height: 60
     border.width: 3
@@ -40,10 +40,13 @@ Rectangle{
         hoverEnabled: true
 
         onClicked: {
-            homeTile.state = "simpleBuilding"
-            game.setBuilding(tileIndex, 1)
-            player.fillPlayer()
+            if (buildingTile.state == "field" && game.getResources(0) >= 200){
+                buildingTile.state = "simpleBuilding"
+                game.setBuilding(tileIndex, 1)
+                player.fillPlayer()
+            } else {
 
+            }
         }
     }
 
