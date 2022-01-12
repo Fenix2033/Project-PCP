@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Player>
-    <resource index="money">1000</resource>
+    <resource index="money">400</resource>
     <resource index="wood">100</resource>
     <resource index="stone">50</resource>
 </Player>

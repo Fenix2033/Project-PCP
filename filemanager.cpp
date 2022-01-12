@@ -11,7 +11,7 @@ Player m_player;
 
 std::vector<Building> FileManager::loadBuildings(){
 
-   QFile file(":/save.xml");
+   QFile file(":/saveBuildings.xml");
 
     if (file.open(QIODevice::ReadOnly)){
 
@@ -42,10 +42,6 @@ std::vector<Building> FileManager::loadBuildings(){
     }
 
     file.close();
-    return m_buildings;
-}
-
-std::vector<Building> FileManager::getBuildings(){
     return m_buildings;
 }
 
@@ -86,7 +82,7 @@ Player FileManager::loadPlayer(){
      return m_player;
 }
 
-void FileManager::writeXml(int index, int buildingN){
+void FileManager::writeBuildings(int index, int buildingN){
     m_buildings.at(index).setType(buildingN);
     QFile file("/home/xkudla/Documents/Mendel/PCP/Project/save.xml");
 
@@ -96,7 +92,7 @@ void FileManager::writeXml(int index, int buildingN){
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartDocument();
         xmlWriter.writeStartElement("building");
-        for (int i = 0; i < building.size(); i++){
+        for (unsigned int i = 0; i < building.size(); i++){
             xmlWriter.writeStartElement("field");
             xmlWriter.writeAttribute("index", QString::number(i));
             xmlWriter.writeCharacters(QString::number(m_buildings.at(i).getType()));
@@ -110,8 +106,38 @@ void FileManager::writeXml(int index, int buildingN){
      file.close();
 }
 
+void FileManager::writePlayer(int index, int price){
+    m_player.setResources(index, price);
+    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/savePlayer.xml");
+
+     if(file.open(QIODevice::WriteOnly)){
+
+        QXmlStreamWriter xmlWriter(&file);
+        xmlWriter.setAutoFormatting(true);
+        xmlWriter.writeStartDocument();
+        xmlWriter.writeStartElement("Player");
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "money");
+        xmlWriter.writeCharacters(QString::number(m_player.getResources(0)));
+        xmlWriter.writeEndElement();
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "wood");
+        xmlWriter.writeCharacters(QString::number(m_player.getResources(1)));
+        xmlWriter.writeEndElement();
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "stone");
+        xmlWriter.writeCharacters(QString::number(m_player.getResources(2)));
+        xmlWriter.writeEndElement();
+        xmlWriter.writeEndElement();
+    } else {
+          qCritical() << "File is not open\n";
+     }
+
+     file.close();
+}
+
 void FileManager::newGame(){
-    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/save.xml");
+    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
 
      if(file.open(QIODevice::WriteOnly)){
 
@@ -119,7 +145,7 @@ void FileManager::newGame(){
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartDocument();
         xmlWriter.writeStartElement("building");
-        for (int i = 0; i < building.size(); i++){
+        for (unsigned int i = 0; i < building.size(); i++){
             xmlWriter.writeStartElement("field");
             xmlWriter.writeAttribute("index", QString::number(i));
             xmlWriter.writeCharacters(QString::number(0));

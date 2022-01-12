@@ -14,7 +14,6 @@ int m_profit;
 public:
     Building();
     int getType();
-    void setPosition(int x, int y);
     void setType(int type);
 };
 

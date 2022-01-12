@@ -16,12 +16,25 @@ Window {
 
     }
 
-    NewGame {
+    Button {
         id: buttonNewGame
         title: "New game"
+        state: "newGame"
         anchors {
             left: parent.left
             top: parent.top
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+    Button {
+        id: buttonExit
+        title: "Exit"
+        state: "exit"
+        anchors {
+            left: parent.left
+            top: buttonNewGame.bottom
             leftMargin: 0
             topMargin: 0
         }
@@ -31,7 +44,7 @@ Window {
         id: player
         anchors {
             left: parent.left
-            top: buttonNewGame.bottom
+            top: buttonExit.bottom
             leftMargin: 0
             topMargin: 0
         }

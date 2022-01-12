@@ -10,7 +10,7 @@ int Player::getResources(int index){
 }
 
 void Player::setResources(int index, int count){
-    m_resources.at(index) = count;
+    m_resources.at(index) += count;
 }
 
 

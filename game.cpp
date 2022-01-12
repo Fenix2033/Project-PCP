@@ -17,11 +17,16 @@ int Game::getResources(int index){
 
 void Game::setBuilding(int index, int buildingN){
     m_buildings.at(index).setType(buildingN);
-    FileManager::writeXml(index, buildingN);
+    m_player.setResources (0, -200);
+    FileManager::writeBuildings(index, buildingN);
+    FileManager::writePlayer(0, -200);
 }
 
 void Game::newGame(){
     FileManager::newGame();
-    m_buildings = FileManager::getBuildings();
+    exit(0);
+}
+
+void Game::gameExit(){
     exit(0);
 }

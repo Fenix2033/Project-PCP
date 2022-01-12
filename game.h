@@ -18,6 +18,7 @@ public:
     Q_INVOKABLE void setBuilding(int index, int buildingN);
     Q_INVOKABLE void newGame();
     Q_INVOKABLE int getResources(int index);
+    Q_INVOKABLE void gameExit();
 signals:
 
 private:

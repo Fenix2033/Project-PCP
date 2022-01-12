@@ -4,7 +4,7 @@
         <file>HomeTile.qml</file>
         <file>images/home.png</file>
         <file>GameField.qml</file>
-        <file>NewGame.qml</file>
+        <file>Button.qml</file>
         <file>Player.qml</file>
     </qresource>
 </RCC>
