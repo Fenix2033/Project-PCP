@@ -42,6 +42,8 @@ Rectangle{
         onClicked: {
             homeTile.state = "simpleBuilding"
             game.setBuilding(tileIndex, 1)
+            player.fillPlayer()
+
         }
     }
 

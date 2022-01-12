@@ -41,10 +41,10 @@ Rectangle {
         hoverEnabled: true
 
         onClicked: {
-            if (button.state === "newGame"){
+            if (button.state == "newGame"){
                 game.newGame()
             }
-            else if (button.state === "exit"){
+            else if (button.state == "exit"){
                 game.gameExit();
             } else {
 

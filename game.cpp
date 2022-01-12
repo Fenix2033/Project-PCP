@@ -15,11 +15,26 @@ int Game::getResources(int index){
     return resource;
 }
 
+int Game::getTurn(){
+    int turn = m_player.getTurn();
+    return turn;
+}
+
+int Game::getProfitResources(int index){
+    int resourceProfit = m_player.getProfitResources(index);
+    return resourceProfit;
+}
+
 void Game::setBuilding(int index, int buildingN){
     m_buildings.at(index).setType(buildingN);
     m_player.setResources (0, -200);
+    m_player.addTurn();
     FileManager::writeBuildings(index, buildingN);
-    FileManager::writePlayer(0, -200);
+    FileManager::writePlayer(m_player);
+}
+
+void Game::addTurn(){
+    m_player.addTurn();
 }
 
 void Game::newGame(){

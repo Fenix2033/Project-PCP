@@ -56,13 +56,49 @@ Player FileManager::loadPlayer(){
     xmlReader.readNext();
     int index = 0;
 
-    while(!xmlReader.isEndDocument()){
+    while(!xmlReader.isEndDocument() and index < 3){
 
         if (xmlReader.isStartElement()){
             QString name = xmlReader.name().toString();
             if (name == "resource"){
                 int resourceCount = xmlReader.readElementText().toInt();
                 m_player.setResources(index, resourceCount);
+                index++;
+            } else if (name == "Player"){
+
+            } else {
+                qCritical() << "Not element field" << name <<"\n";
+            }
+        }
+
+        xmlReader.readNext();
+    }
+
+    xmlReader.readNext() - 1;
+
+    if (xmlReader.isStartElement()){
+        QString name = xmlReader.name().toString();
+        if (name == "resource"){
+            int turnCount = xmlReader.readElementText().toInt();
+            m_player.setTurn(turnCount);
+        } else if (name == "Player"){
+
+        } else {
+            qCritical() << "Not element field" << name <<"\n";
+        }
+    }
+
+    xmlReader.readNext();
+
+    index = 0;
+
+    while(!xmlReader.isEndDocument() and index < 3){
+
+        if (xmlReader.isStartElement()){
+            QString name = xmlReader.name().toString();
+            if (name == "resource"){
+                int resourceProfitCount = xmlReader.readElementText().toInt();
+                m_player.setProfitResources(index, resourceProfitCount);
                 index++;
             } else if (name == "Player"){
 
@@ -84,7 +120,7 @@ Player FileManager::loadPlayer(){
 
 void FileManager::writeBuildings(int index, int buildingN){
     m_buildings.at(index).setType(buildingN);
-    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/save.xml");
+    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
 
      if(file.open(QIODevice::WriteOnly)){
 
@@ -106,29 +142,54 @@ void FileManager::writeBuildings(int index, int buildingN){
      file.close();
 }
 
-void FileManager::writePlayer(int index, int price){
-    m_player.setResources(index, price);
+void FileManager::writePlayer(Player player){
     QFile file("/home/xkudla/Documents/Mendel/PCP/Project/savePlayer.xml");
 
      if(file.open(QIODevice::WriteOnly)){
 
         QXmlStreamWriter xmlWriter(&file);
         xmlWriter.setAutoFormatting(true);
+
         xmlWriter.writeStartDocument();
         xmlWriter.writeStartElement("Player");
+
         xmlWriter.writeStartElement("resource");
-        xmlWriter.writeAttribute("index", "money");
-        xmlWriter.writeCharacters(QString::number(m_player.getResources(0)));
+        xmlWriter.writeAttribute("index", "gold");
+        xmlWriter.writeCharacters(QString::number(player.getResources(0)));
         xmlWriter.writeEndElement();
+
         xmlWriter.writeStartElement("resource");
         xmlWriter.writeAttribute("index", "wood");
-        xmlWriter.writeCharacters(QString::number(m_player.getResources(1)));
+        xmlWriter.writeCharacters(QString::number(player.getResources(1)));
         xmlWriter.writeEndElement();
+
         xmlWriter.writeStartElement("resource");
         xmlWriter.writeAttribute("index", "stone");
-        xmlWriter.writeCharacters(QString::number(m_player.getResources(2)));
+        xmlWriter.writeCharacters(QString::number(player.getResources(2)));
         xmlWriter.writeEndElement();
+
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "turn");
+        xmlWriter.writeCharacters(QString::number(player.getTurn()));
         xmlWriter.writeEndElement();
+
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "profitGold");
+        xmlWriter.writeCharacters(QString::number(player.getProfitResources(0)));
+        xmlWriter.writeEndElement();
+
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "profitWood");
+        xmlWriter.writeCharacters(QString::number(player.getProfitResources(1)));
+        xmlWriter.writeEndElement();
+
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "profitStone");
+        xmlWriter.writeCharacters(QString::number(player.getProfitResources(2)));
+        xmlWriter.writeEndElement();
+
+        xmlWriter.writeEndElement();
+
     } else {
           qCritical() << "File is not open\n";
      }
@@ -137,11 +198,11 @@ void FileManager::writePlayer(int index, int price){
 }
 
 void FileManager::newGame(){
-    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
+    QFile fileBuildings("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
 
-     if(file.open(QIODevice::WriteOnly)){
+     if(fileBuildings.open(QIODevice::WriteOnly)){
 
-        QXmlStreamWriter xmlWriter(&file);
+        QXmlStreamWriter xmlWriter(&fileBuildings);
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartDocument();
         xmlWriter.writeStartElement("building");
@@ -156,5 +217,58 @@ void FileManager::newGame(){
           qCritical() << "File is not open\n";
      }
 
-     file.close();
+     fileBuildings.close();
+
+     QFile filePlayer("/home/xkudla/Documents/Mendel/PCP/Project/savePlayer.xml");
+
+      if(filePlayer.open(QIODevice::WriteOnly)){
+
+          QXmlStreamWriter xmlWriter(&filePlayer);
+          xmlWriter.setAutoFormatting(true);
+
+          xmlWriter.writeStartDocument();
+          xmlWriter.writeStartElement("Player");
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "gold");
+          xmlWriter.writeCharacters(QString::number(2000));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "wood");
+          xmlWriter.writeCharacters(QString::number(500));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "stone");
+          xmlWriter.writeCharacters(QString::number(200));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "turn");
+          xmlWriter.writeCharacters(QString::number(0));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "profitGold");
+          xmlWriter.writeCharacters(QString::number(0));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "profitWood");
+          xmlWriter.writeCharacters(QString::number(0));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "profitStone");
+          xmlWriter.writeCharacters(QString::number(0));
+          xmlWriter.writeEndElement();
+
+          xmlWriter.writeEndElement();
+
+     } else {
+           qCritical() << "File is not open\n";
+      }
+
+      filePlayer.close();
 }

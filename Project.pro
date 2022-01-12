@@ -33,7 +33,6 @@ HEADERS += \
     building.h \
     game.h \
     player.h \
-    position.h \
     filemanager.h
 
 DISTFILES += \

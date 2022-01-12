@@ -7,9 +7,6 @@ class Building
 {
 private:
 int m_type;
-int m_priceMoney;
-int m_priceResource;
-int m_profit;
 
 public:
     Building();

@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 
 Window {
+    id: windowGame
     width: 1366
     height: 720
     visible: true
