@@ -22,6 +22,14 @@ Rectangle{
             anchors.centerIn: parent
             font.pixelSize: 26
         }
+
+        Text {
+            id: winText
+            text: gameText
+            color: "white"
+            anchors.centerIn: parent
+            font.pixelSize: 26
+        }
     }
 
 }

@@ -74,6 +74,11 @@ Rectangle {
             else if (button.state === "closeTextVisible"){
                 resourcesText.visible = false;
                 buttonVisibleText.visible = false;
+                gameField.visible = true;
+                buttonNewGame.visible = true;
+                buttonExit.visible = true;
+                buttonSkipTurn.visible = true;
+                playerResources.visible = true;
             } else {}
         }
     }

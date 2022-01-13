@@ -42,6 +42,16 @@ Rectangle{
 
     }
 
+    Image {
+        id: homeImg
+        opacity: 0
+        source: "images/home.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
     Text {
         id: label
         text: "0"
@@ -52,32 +62,6 @@ Rectangle{
         }
         color: "white"
         anchors.centerIn: parent
-    }
-
-    MouseArea{
-        anchors.fill: parent
-        hoverEnabled: true
-        onClicked: {
-            if (buildingTile.state === "placeForGold"){
-                if (game.getResources(0) >= 200
-                    && game.getResources(1) >= 50 && game.getResources(2) >= 20) {
-                        buildingTile.state = "simpleGoldBuilding"
-                        game.setBuilding(tileIndex, 2)
-                } else {
-                    resourcesText.visible = true;
-                    buttonVisibleText.visible = true;
-                }
-
-            } else if (buildingTile.state === "placeForWood" && game.getResources(0) >= 300
-                       && game.getResources(1) >= 30 && game.getResources(2) >= 40){
-                buildingTile.state = "simpleWoodBuilding"
-                game.setBuilding(tileIndex, 5)
-            } else if (buildingTile.state === "placeForStone"){
-                buildingTile.state = "simpleStoneBuilding"
-                game.setBuilding(tileIndex, 8)
-            }
-            playerResources.fillPlayer()
-        }
     }
 
     states: [
@@ -141,6 +125,13 @@ Rectangle{
             target: stoneImg
             opacity: 100
             }
+        },
+        State {
+            name: "home"
+            PropertyChanges {
+            target: homeImg
+            opacity: 100
+            }
         }
   ]
 
@@ -171,7 +162,65 @@ Rectangle{
             state: "field"
         }
     }
-}
 
+    MouseArea{
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: {
+            if (buildingTile.state === "placeForGold"){
+                if (game.getResources(0) >= 200
+                    && game.getResources(1) >= 50 && game.getResources(2) >= 20) {
+                        buildingTile.state = "simpleGoldBuilding"
+                        game.setBuilding(tileIndex, 2)
+                } else {
+                    visibileField()
+                }
+            } else if (buildingTile.state === "placeForWood"){
+                if(game.getResources(0) >= 300
+                  && game.getResources(1) >= 30 && game.getResources(2) >= 40){
+                    buildingTile.state = "simpleWoodBuilding"
+                    game.setBuilding(tileIndex, 5)
+                } else {
+                    visibileField()
+                }
+
+            } else if (buildingTile.state === "placeForStone"){
+                if(game.getResources(0) >= 500
+                  && game.getResources(1) >= 100 && game.getResources(2) >= 20){
+                    buildingTile.state = "simpleStoneBuilding"
+                    game.setBuilding(tileIndex, 8)
+                } else {
+                    visibileField()
+                }
+            } else if (buildingTile.state === "placeForHome"){
+                if(game.getResources(0) >= 2500
+                  && game.getResources(1) >= 800 && game.getResources(2) >= 300){
+                    buildingTile.state = "home"
+                    game.setBuilding(tileIndex, 0)
+                    winText.visible = true
+                    gameField.visible = false;
+                    buttonSkipTurn.visible = false;
+                    playerResources.visible = false;
+            } else {
+                    visibileField()
+                }
+
+            } else {
+
+            }
+            playerResources.fillPlayer()
+        }
+    }
+
+    function visibileField(){
+        resourcesText.visible = true;
+        buttonVisibleText.visible = true;
+        gameField.visible = false;
+        buttonNewGame.visible = false;
+        buttonExit.visible = false;
+        buttonSkipTurn.visible = false;
+        playerResources.visible = false;
+    }
+}
 
 

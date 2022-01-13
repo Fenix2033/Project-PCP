@@ -70,6 +70,12 @@ Window {
         visible: false
     }
 
+    Popup {
+        id: winText
+        gameText: "You win"
+        visible: false
+    }
+
     Button {
         id: buttonVisibleText
         title: "x"
