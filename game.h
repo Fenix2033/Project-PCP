@@ -19,7 +19,6 @@ public:
     Q_INVOKABLE int getResources(int index);
     Q_INVOKABLE int getTurn();
     Q_INVOKABLE int getProfitResources(int index);
-    Q_INVOKABLE void addTurn();
     Q_INVOKABLE void skipTurn();
     Q_INVOKABLE void gameExit();
 signals:

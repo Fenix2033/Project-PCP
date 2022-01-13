@@ -39,9 +39,9 @@ Rectangle{
         hoverEnabled: true
 
         onClicked: {
-            if (buildingTile.state == "placeForGold" && game.getResources(0) >= 200){
+            if (buildingTile.state == "placeForGold"){
                 buildingTile.state = "simpleGoldBuilding"
-                game.setBuilding(tileIndex, 1)
+                game.setBuilding(tileIndex, 2)
                 player.fillPlayer()
             } else {
 

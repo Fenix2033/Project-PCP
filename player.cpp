@@ -17,19 +17,52 @@ int Player::getProfitResources(int index){
     return m_profitResources.at(index);
 }
 
-void Player::setResources(int index, int count){
-    m_resources.at(index) += count;
+void Player::setBuilding(int buildingType){
+    Building *building = new Building;
+    if (checkResources(buildingType) == true){
+        building->setType(buildingType);
+        skipTurn();
+        m_resources.at(0) -= building->getPrice().at(0);
+        m_resources.at(1) -= building->getPrice().at(1);
+        m_resources.at(2) -= building->getPrice().at(2);
+        if (buildingType == 2){
+            m_profitResources.at(0) += building->getProfit();
+        }
+    }
+    delete building;
 }
 
 void Player::setTurn(int count){
     m_turn += count;
 }
 
-
-void Player::setProfitResources(int index, int count){
-    m_profitResources.at(index) += count;
+void Player::skipTurn(){
+    for (unsigned int i = 0; i < 3; i++){
+        m_resources.at(i) += m_profitResources.at(i);
+    }
+   m_turn++;
 }
 
-void Player::addTurn(){
-    m_turn++;
+
+bool Player::checkResources(int buildingType){
+    Building *building = new Building;
+    building->setType(buildingType);
+    if (m_resources.at(0) >= building->getPrice().at(0) and
+            m_resources.at(1) >= building->getPrice().at(1) and
+            m_resources.at(2) >= building->getPrice().at(2)){
+        delete building;
+        return true;
+    } else {
+        delete building;
+        return false;
+    }
+
+}
+
+void Player::loadResources(int index, int resourceCount){
+    m_resources.at(index) = resourceCount;
+}
+
+void Player::loadResourcesProfit(int index, int resourceCount){
+    m_profitResources.at(index) = resourceCount;
 }

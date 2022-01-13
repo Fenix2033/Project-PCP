@@ -5,6 +5,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <array>
+#include "building.h"
 
 class Player
 {
@@ -18,10 +19,13 @@ public:
     int getResources(int index);
     int getTurn();
     int getProfitResources(int index);
-    void setResources(int index, int count);
+    void setBuilding(int buildingType);
     void setTurn(int count);
     void setProfitResources(int index, int count);
-    void addTurn();
+    bool checkResources(int buildingType);
+    void loadResources(int index, int resourceCount);
+    void loadResourcesProfit(int index, int resourceCount);
+    void skipTurn();
 };
 
 #endif // PLAYER_H

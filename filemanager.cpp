@@ -61,7 +61,7 @@ Player FileManager::loadPlayer(){
             QString name = xmlReader.name().toString();
             if (name == "resource"){
                 int resourceCount = xmlReader.readElementText().toInt();
-                m_player.setResources(index, resourceCount);
+                m_player.loadResources(index, resourceCount);
                 index++;
             } else if (name == "Player"){
 
@@ -97,7 +97,7 @@ Player FileManager::loadPlayer(){
             QString name = xmlReader.name().toString();
             if (name == "resource"){
                 int resourceProfitCount = xmlReader.readElementText().toInt();
-                m_player.setProfitResources(index, resourceProfitCount);
+                m_player.loadResourcesProfit(index, resourceProfitCount);
                 index++;
             } else if (name == "Player"){
 

@@ -26,21 +26,16 @@ int Game::getProfitResources(int index){
 }
 
 void Game::setBuilding(int index, int buildingN){
+    std::cout << buildingN << std::endl;
     m_buildings.at(index).setType(buildingN);
-    m_player.setResources (0, -200);
-    skipTurn();
-    m_player.setProfitResources(0, 10);
+    m_player.setBuilding(buildingN);
     FileManager::writeBuildings(index, buildingN);
     FileManager::writePlayer(m_player);
 }
 
-void Game::addTurn(){
-    m_player.addTurn();
-}
 
 void Game::skipTurn(){
-    for (unsigned int i = 0; i < 3; i++) m_player.setResources(i, m_player.getProfitResources(i));
-    m_player.addTurn();
+    m_player.skipTurn();
 }
 
 void Game::newGame(){
