@@ -16,7 +16,6 @@ Rectangle {
     width: parent.width * 0.2
     height: parent.height * 0.35
 
-
     Text {
         id: textGold
         text: " Gold: " + gold
@@ -97,7 +96,7 @@ Rectangle {
         profitGold = game.getProfitResources(0)
         profitWood = game.getProfitResources(1)
         profitStone = game.getProfitResources(2)
-        textGold.text = "Gold: " + gold
+        textGold.text = " Gold: " + gold
         textWood.text = "\n Wood: " + wood
         textStone.text = "\n \n Stone: " + stone
         textTurn.text = "\n \n \n Turn: 150/" + turn

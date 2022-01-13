@@ -21,7 +21,6 @@ public:
     static Player loadPlayer();
     static void writeBuildings(int index, int buildingN);
     static void writePlayer(Player player);
-
     static void newGame();
 
 };

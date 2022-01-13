@@ -1,7 +1,6 @@
 #include "game.h"
 
-Game::Game(QObject *parent) : QObject(parent)
-{
+Game::Game(QObject *parent) : QObject(parent){
     m_buildings = FileManager::loadBuildings();
     m_player = FileManager::loadPlayer();
 }
@@ -25,10 +24,10 @@ int Game::getProfitResources(int index){
     return resourceProfit;
 }
 
-void Game::setBuilding(int index, int buildingN){
-    m_buildings.at(index).setType(buildingN);
-    m_player.setBuilding(buildingN);
-    FileManager::writeBuildings(index, buildingN);
+void Game::setBuilding(int index, int buildingTyp){
+    m_buildings.at(index).setType(buildingTyp);
+    m_player.setBuilding(buildingTyp);
+    FileManager::writeBuildings(index, buildingTyp);
     FileManager::writePlayer(m_player);
 }
 

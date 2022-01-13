@@ -14,7 +14,7 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = nullptr);
     Q_INVOKABLE int getBuildingCount(int index);
-    Q_INVOKABLE void setBuilding(int index, int buildingN);
+    Q_INVOKABLE void setBuilding(int index, int buildingTyp);
     Q_INVOKABLE void newGame();
     Q_INVOKABLE int getResources(int index);
     Q_INVOKABLE int getTurn();

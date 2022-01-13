@@ -79,7 +79,7 @@ Player FileManager::loadPlayer(){
         QString name = xmlReader.name().toString();
         if (name == "resource"){
             int turnCount = xmlReader.readElementText().toInt();
-            m_player.setTurn(turnCount);
+            m_player.loadTurn(turnCount);
         } else if (name == "Player"){
 
         } else {

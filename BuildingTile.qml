@@ -11,6 +11,105 @@ Rectangle{
     border.width: 3
     radius: 4
 
+    state: {
+        switch (buildingCount){
+          case 1:
+            state: "placeForGold"
+            break;
+          case 2:
+            state: "simpleGoldBuilding"
+            break;
+          case 3:
+             state: "updateGoldBuilding"
+            break;
+          case 4:
+            state: "placeForWood"
+            break;
+          case 5:
+            state: "simpleWoodBuilding"
+            break;
+          case 6:
+            state: "updateWoodBuilding"
+            break;
+          case 7:
+            state: "placeForStone"
+            break;
+          case 8:
+            state: "simpleStoneBuilding"
+            break;
+          case 9:
+            state: "updateStoneBuilding"
+            break;
+          case 10:
+            state: "placeForHome"
+            break;
+          case 0:
+            state: "win"
+            break;
+          default: state: "field"
+        }
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: {
+            if (buildingTile.state === "placeForGold" && game.checkResources(2) === true){
+                buildingTile.state = "simpleGoldBuilding";
+                game.setBuilding(tileIndex, 2);
+            } else if (buildingTile.state === "placeForWood" && game.checkResources(5) === true){
+                buildingTile.state = "simpleWoodBuilding";
+                game.setBuilding(tileIndex, 5);
+            } else if (buildingTile.state === "placeForStone" && game.checkResources(8) === true){
+                buildingTile.state = "simpleStoneBuilding";
+                game.setBuilding(tileIndex, 8);
+            } else if (buildingTile.state === "simpleGoldBuilding" && game.checkResources(3) === true){
+                 buildingTile.state = "updateGoldBuilding";
+                 game.setBuilding(tileIndex, 3);
+            } else if (buildingTile.state === "simpleWoodBuilding" && game.checkResources(6) === true){
+                 buildingTile.state = "updateWoodBuilding"
+                 game.setBuilding(tileIndex, 6)
+            } else if (buildingTile.state === "simpleStoneBuilding" && game.checkResources(9) === true){
+                  buildingTile.state = "updateStoneBuilding"
+                  game.setBuilding(tileIndex, 9)
+            } else if (buildingTile.state === "placeForHome" && game.checkResources(0) === true){
+                    buildingTile.state = "home"
+                    game.setBuilding(tileIndex, 0)
+                    winText.visible = true
+                    gameField.visible = false;
+                    buttonSkipTurn.visible = false;
+                    playerResources.visible = false;
+                    priceBuilding.visible = false;
+                    game.newGame();
+            } else if (buildingTile.state === "updateGoldBuilding" || buildingTile.state === "updateWoodBuildin"
+                       || buildingTile.state === "updateStoneBuilding"){
+
+            } else visibileField();
+
+            if (game.getTurn() > 150){
+                lostText.visible = true;
+                gameField.visible = false;
+                buttonSkipTurn.visible = false;
+                playerResources.visible = false;
+                priceBuilding.visible = false;
+                game.newGame();
+            }
+
+            playerResources.fillPlayer();
+        }
+    }
+
+    function visibileField(){
+        resourcesText.visible = true;
+        buttonVisibleText.visible = true;
+        gameField.visible = false;
+        buttonNewGame.visible = false;
+        buttonExit.visible = false;
+        buttonSkipTurn.visible = false;
+        playerResources.visible = false;
+        priceBuilding.visible = false;
+    }
+
     Image {
         id: goldImg
         opacity: 0
@@ -184,128 +283,4 @@ Rectangle{
             }
         }
   ]
-
-    state: {
-        if (buildingCount === 1) {
-            state: "placeForGold"
-       } else if (buildingCount === 2){
-            state: "simpleGoldBuilding"
-        } else if (buildingCount === 3){
-             state: "updateGoldBuilding"
-        } else if (buildingCount === 4){
-             state: "placeForWood"
-        } else if (buildingCount === 5){
-             state: "simpleWoodBuilding"
-        } else if (buildingCount === 6){
-             state: "updateWoodBuilding"
-        } else if (buildingCount === 7){
-             state: "placeForStone"
-       } else if (buildingCount === 8){
-            state: "simpleStoneBuilding"
-       } else if (buildingCount === 9){
-            state: "updateStoneBuilding"
-       } else if (buildingCount === 10){
-            state: "placeForHome"
-       } else if (buildingCount === 0){
-            state: "win"
-       } else {
-            state: "field"
-        }
-    }
-
-    MouseArea{
-        anchors.fill: parent
-        hoverEnabled: true
-        onClicked: {
-            if (buildingTile.state === "placeForGold"){
-                if (game.getResources(0) >= 200
-                    && game.getResources(1) >= 50 && game.getResources(2) >= 20) {
-                        buildingTile.state = "simpleGoldBuilding"
-                        game.setBuilding(tileIndex, 2)
-                } else {
-                    visibileField()
-                }
-            } else if (buildingTile.state === "placeForWood"){
-                if(game.getResources(0) >= 300
-                  && game.getResources(1) >= 30 && game.getResources(2) >= 40){
-                    buildingTile.state = "simpleWoodBuilding"
-                    game.setBuilding(tileIndex, 5)
-                } else {
-                    visibileField()
-                }
-
-            } else if (buildingTile.state === "placeForStone"){
-                if(game.getResources(0) >= 500
-                  && game.getResources(1) >= 100 && game.getResources(2) >= 20){
-                    buildingTile.state = "simpleStoneBuilding"
-                    game.setBuilding(tileIndex, 8)
-                } else {
-                    visibileField()
-                }
-            } else if (buildingTile.state === "simpleGoldBuilding"){
-                if(game.getResources(0) >= 500
-                  && game.getResources(1) >= 100 && game.getResources(2) >= 75){
-                    buildingTile.state = "updateGoldBuilding"
-                    game.setBuilding(tileIndex, 3)
-                } else {
-                    visibileField()
-                }
-            } else if (buildingTile.state === "simpleWoodBuilding"){
-                if(game.getResources(0) >= 700
-                  && game.getResources(1) >= 80 && game.getResources(2) >= 100){
-                    buildingTile.state = "updateWoodBuilding"
-                    game.setBuilding(tileIndex, 6)
-                } else {
-                    visibileField()
-                }
-            } else if (buildingTile.state === "simpleStoneBuilding"){
-                if(game.getResources(0) >= 1000
-                  && game.getResources(1) >= 200 && game.getResources(2) >= 50){
-                    buildingTile.state = "updateStoneBuilding"
-                    game.setBuilding(tileIndex, 9)
-                } else {
-                    visibileField()
-                }
-            } else if (buildingTile.state === "placeForHome"){
-                if(game.getResources(0) >= 2500
-                  && game.getResources(1) >= 800 && game.getResources(2) >= 300){
-                    buildingTile.state = "home"
-                    game.setBuilding(tileIndex, 0)
-                    winText.visible = true
-                    gameField.visible = false;
-                    buttonSkipTurn.visible = false;
-                    playerResources.visible = false;
-                    priceBuilding.visible = false;
-                    game.newGame();
-            } else {
-                    visibileField()
-                }
-
-            } else {
-
-            }
-
-            if (game.getTurn() > 150){
-                lostText.visible = true
-                gameField.visible = false;
-                buttonSkipTurn.visible = false;
-                playerResources.visible = false;
-                priceBuilding.visible = false;
-                game.newGame();
-            }
-
-            playerResources.fillPlayer()
-        }
-    }
-
-    function visibileField(){
-        resourcesText.visible = true;
-        buttonVisibleText.visible = true;
-        gameField.visible = false;
-        buttonNewGame.visible = false;
-        buttonExit.visible = false;
-        buttonSkipTurn.visible = false;
-        playerResources.visible = false;
-        priceBuilding.visible = false;
-    }
 }
