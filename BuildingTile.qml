@@ -220,6 +220,7 @@ Rectangle{
         buttonExit.visible = false;
         buttonSkipTurn.visible = false;
         playerResources.visible = false;
+        priceBuilding.visible = false;
     }
 }
 

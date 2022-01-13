@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 
 Window {
     id: windowGame
-    width: 1366
+    width: 1900
     height: 720
     visible: true
     title: qsTr("Game")
@@ -26,7 +26,7 @@ Window {
             left: parent.left
             top: parent.top
             leftMargin: 0
-            topMargin: 0
+            topMargin: 100
         }
     }
 
@@ -64,6 +64,16 @@ Window {
         }
     }
 
+    PriceBuilding {
+        id: priceBuilding
+        anchors {
+            right: parent.right
+            top: parent.top
+            leftMargin: 0
+            topMargin: 200
+        }
+    }
+
     Popup {
         id: resourcesText
         gameText: "You don't have enough resources"
@@ -83,9 +93,9 @@ Window {
         visible: false
         anchors {
             left: buttonSkipTurn.right
-            top: buttonSkipTurn.bottom
-            leftMargin: 375
-            topMargin: 30
+            top: buttonExit.bottom
+            leftMargin: 500
+            topMargin: 5
         }
     }
 

@@ -79,6 +79,7 @@ Rectangle {
                 buttonExit.visible = true;
                 buttonSkipTurn.visible = true;
                 playerResources.visible = true;
+                priceBuilding.visible = true
             } else {}
         }
     }

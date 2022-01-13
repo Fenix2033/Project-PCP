@@ -13,5 +13,6 @@
         <file>Button.qml</file>
         <file>PlayerResources.qml</file>
         <file>Popup.qml</file>
+        <file>PriceBuilding.qml</file>
     </qresource>
 </RCC>

@@ -19,7 +19,7 @@ Rectangle {
 
     Text {
         id: textGold
-        text: "Gold: " + gold
+        text: " Gold: " + gold
         color: "gold"
         font.bold: true
         font.pixelSize: 30
