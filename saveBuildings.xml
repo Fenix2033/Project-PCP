@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <building>
-    <field index="0">2</field>
+    <field index="0">1</field>
     <field index="1">4</field>
     <field index="2">4</field>
     <field index="3">4</field>
-    <field index="4">2</field>
+    <field index="4">1</field>
     <field index="5">7</field>
     <field index="6">7</field>
     <field index="7">7</field>
     <field index="8">7</field>
     <field index="9">7</field>
-    <field index="10">2</field>
-    <field index="11">2</field>
-    <field index="12">0</field>
+    <field index="10">1</field>
+    <field index="11">1</field>
+    <field index="12">10</field>
     <field index="13">4</field>
     <field index="14">4</field>
     <field index="15">1</field>
@@ -22,7 +22,7 @@
     <field index="19">1</field>
     <field index="20">4</field>
     <field index="21">4</field>
-    <field index="22">2</field>
+    <field index="22">1</field>
     <field index="23">4</field>
     <field index="24">4</field>
     <field index="25">4</field>

@@ -59,7 +59,7 @@ Rectangle {
             }
             else if (button.state === "skipTurn"){
                 game.skipTurn();
-                player.fillPlayer();
+                playerResources.fillPlayer();
             } else {
 
             }

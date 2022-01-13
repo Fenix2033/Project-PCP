@@ -22,6 +22,26 @@ Rectangle{
 
     }
 
+    Image {
+        id: woodImg
+        opacity: 0
+        source: "images/wood.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
+    Image {
+        id: stoneImg
+        opacity: 0
+        source: "images/stone.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
     Text {
         id: label
         text: "0"
@@ -37,26 +57,25 @@ Rectangle{
     MouseArea{
         anchors.fill: parent
         hoverEnabled: true
-
         onClicked: {
-            if (buildingTile.state == "placeForGold"){
+            if (buildingTile.state === "placeForGold" && game.getResources(0) >= 200
+                 && game.getResources(1) >= 50 && game.getResources(2) >= 20){
                 buildingTile.state = "simpleGoldBuilding"
                 game.setBuilding(tileIndex, 2)
-                player.fillPlayer()
-            } else {
 
+            } else if (buildingTile.state === "placeForWood" && game.getResources(0) >= 300
+                       && game.getResources(1) >= 30 && game.getResources(2) >= 40){
+                buildingTile.state = "simpleWoodBuilding"
+                game.setBuilding(tileIndex, 5)
+            } else if (buildingTile.state === "placeForStone"){
+                buildingTile.state = "simpleStoneBuilding"
+                game.setBuilding(tileIndex, 8)
             }
+            playerResources.fillPlayer()
         }
     }
 
     states: [
-        State {
-            name: "simpleGoldBuilding"
-            PropertyChanges {
-            target: goldImg
-            opacity: 100
-            }   
-        },
 
         State {
             name: "field"
@@ -90,26 +109,57 @@ Rectangle{
             }
         },
         State {
-            name: "win"
+            name: "placeForHome"
             PropertyChanges {
                 target: buildingTile
                 border.color: "red"
                 color: "red"
             }
+        },
+        State {
+            name: "simpleGoldBuilding"
+            PropertyChanges {
+            target: goldImg
+            opacity: 100
+            }
+        },
+        State {
+            name: "simpleWoodBuilding"
+            PropertyChanges {
+            target: woodImg
+            opacity: 100
+            }
+        },
+        State {
+            name: "simpleStoneBuilding"
+            PropertyChanges {
+            target: stoneImg
+            opacity: 100
+            }
         }
-
-
   ]
 
     state: {
-        if (buildingCount === 1){
+        if (buildingCount === 1) {
             state: "placeForGold"
-       } else if(buildingCount === 2){
+       } else if (buildingCount === 2){
             state: "simpleGoldBuilding"
-       } else if (buildingCount === 4){
-            state: "placeForWood"
-       } else if (buildingCount === 7){
-            state: "placeForStone"
+        } else if (buildingCount === 3){
+             state: "updateGoldBuilding"
+        } else if (buildingCount === 4){
+             state: "placeForWood"
+        } else if (buildingCount === 5){
+             state: "simpleWoodBuilding"
+        } else if (buildingCount === 6){
+             state: "updateWoodBuilding"
+        } else if (buildingCount === 7){
+             state: "placeForStone"
+       } else if (buildingCount === 8){
+            state: "simpleBuildingStone"
+       } else if (buildingCount === 9){
+            state: "updateBuildingStone"
+       } else if (buildingCount === 10){
+            state: "placeForHome"
        } else if (buildingCount === 0){
             state: "win"
        } else {

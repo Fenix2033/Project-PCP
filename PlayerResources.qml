@@ -11,7 +11,7 @@ Rectangle {
     property int profitWood: game.getProfitResources(1)
     property int profitStone: game.getProfitResources(2)
 
-    id: player;
+    id: playerResources;
     color: "Blue"
     width: parent.width * 0.2
     height: parent.height * 0.35

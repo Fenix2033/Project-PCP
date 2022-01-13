@@ -27,6 +27,8 @@ void Player::setBuilding(int buildingType){
         m_resources.at(2) -= building->getPrice().at(2);
         if (buildingType == 2){
             m_profitResources.at(0) += building->getProfit();
+        } else if (buildingType == 5){
+            m_profitResources.at(1) += building->getProfit();
         }
     }
     delete building;

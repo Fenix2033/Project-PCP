@@ -21,6 +21,7 @@ public:
     Q_INVOKABLE int getProfitResources(int index);
     Q_INVOKABLE void skipTurn();
     Q_INVOKABLE void gameExit();
+    Q_INVOKABLE bool checkResources(int buildingType);
 signals:
 
 private:

@@ -17,6 +17,11 @@ void Building::setType(int buildingType){
         m_price.at(1) = 50;
         m_price.at(2) = 20;
         m_profit = 20;
+    } else if (buildingType == 5) {
+        m_price.at(0) = 300;
+        m_price.at(1) = 30;
+        m_price.at(2) = 40;
+        m_profit = 5;
     }
 }
 

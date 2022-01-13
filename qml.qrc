@@ -4,8 +4,13 @@
         <file>BuildingTile.qml</file>
         <file>images/home.png</file>
         <file>images/gold.png</file>
+        <file>images/goldUpdate.png</file>
+        <file>images/wood.png</file>
+        <file>images/woodUpdate.png</file>
+        <file>images/stone.png</file>
+        <file>images/stoneUpdate.png</file>
         <file>GameField.qml</file>
         <file>Button.qml</file>
-        <file>Player.qml</file>
+        <file>PlayerResources.qml</file>
     </qresource>
 </RCC>

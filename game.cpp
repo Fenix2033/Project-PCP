@@ -26,7 +26,6 @@ int Game::getProfitResources(int index){
 }
 
 void Game::setBuilding(int index, int buildingN){
-    std::cout << buildingN << std::endl;
     m_buildings.at(index).setType(buildingN);
     m_player.setBuilding(buildingN);
     FileManager::writeBuildings(index, buildingN);
@@ -45,4 +44,9 @@ void Game::newGame(){
 
 void Game::gameExit(){
     exit(0);
+}
+
+bool Game::checkResources(int buildingType){
+    bool check = m_player.checkResources(buildingType);
+    return check;
 }

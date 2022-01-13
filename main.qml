@@ -54,8 +54,8 @@ Window {
         }
     }
 
-    Player {
-        id: player
+    PlayerResources {
+        id: playerResources
         anchors {
             left: parent.left
             top: buttonSkipTurn.bottom
