@@ -15,7 +15,8 @@ SOURCES += \
 
 RESOURCES += qml.qrc \
              saveBuildings.xml \
-             savePlayer.xml
+             savePlayer.xml \
+             newGameField.xml
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -36,5 +37,6 @@ HEADERS += \
     filemanager.h
 
 DISTFILES += \
+    newGameField.xml \
     saveBuildings.xml \
     savePlayer.xml

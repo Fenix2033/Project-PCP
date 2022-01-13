@@ -3,6 +3,7 @@
         <file>main.qml</file>
         <file>BuildingTile.qml</file>
         <file>images/home.png</file>
+        <file>images/gold.png</file>
         <file>GameField.qml</file>
         <file>Button.qml</file>
         <file>Player.qml</file>

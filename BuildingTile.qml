@@ -10,17 +10,16 @@ Rectangle{
     width: 60
     height: 60
     border.width: 3
-    border.color: "brown"
-    color: "brown"
     radius: 4
 
     Image {
-        id: homeImg
+        id: goldImg
         opacity: 0
-        source: "images/home.png"
+        source: "images/gold.png"
         width: parent.width-4
         height: parent.height-4
         anchors.centerIn: parent
+
     }
 
     Text {
@@ -40,8 +39,8 @@ Rectangle{
         hoverEnabled: true
 
         onClicked: {
-            if (buildingTile.state == "field" && game.getResources(0) >= 200){
-                buildingTile.state = "simpleBuilding"
+            if (buildingTile.state == "placeForGold" && game.getResources(0) >= 200){
+                buildingTile.state = "simpleGoldBuilding"
                 game.setBuilding(tileIndex, 1)
                 player.fillPlayer()
             } else {
@@ -52,25 +51,68 @@ Rectangle{
 
     states: [
         State {
-            name: "simpleBuilding"
+            name: "simpleGoldBuilding"
             PropertyChanges {
-            target: homeImg
+            target: goldImg
             opacity: 100
-            }
+            }   
         },
 
         State {
             name: "field"
             PropertyChanges {
+                target: buildingTile
+                color: "grey"
             }
-       }
+       },
+        State {
+            name: "placeForGold"
+            PropertyChanges {
+                target: buildingTile
+                border.color: "gold"
+                color: "gold"
+            }
+        },
+        State {
+            name: "placeForWood"
+            PropertyChanges {
+                target: buildingTile
+                border.color: "brown"
+                color: "brown"
+            }
+        },
+        State {
+            name: "placeForStone"
+            PropertyChanges {
+                target: buildingTile
+                border.color: "grey"
+                color: "grey"
+            }
+        },
+        State {
+            name: "win"
+            PropertyChanges {
+                target: buildingTile
+                border.color: "red"
+                color: "red"
+            }
+        }
+
 
   ]
 
     state: {
         if (buildingCount === 1){
-            state: "simpleBuilding"
+            state: "placeForGold"
+       } else if(buildingCount === 2){
+            state: "simpleGoldBuilding"
+       } else if (buildingCount === 4){
+            state: "placeForWood"
+       } else if (buildingCount === 7){
+            state: "placeForStone"
        } else if (buildingCount === 0){
+            state: "win"
+       } else {
             state: "field"
         }
     }
