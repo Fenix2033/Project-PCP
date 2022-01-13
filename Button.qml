@@ -42,7 +42,17 @@ Rectangle {
                 target: button
                 color: "magenta"
         }
-      }
+      },
+
+      State {
+            name: "closeTextVisible"
+            PropertyChanges {
+                target: button
+                color: "red"
+                width: parent.width * 0.05
+            }
+        }
+
    ]
 
 
@@ -60,9 +70,11 @@ Rectangle {
             else if (button.state === "skipTurn"){
                 game.skipTurn();
                 playerResources.fillPlayer();
-            } else {
-
             }
+            else if (button.state === "closeTextVisible"){
+                resourcesText.visible = false;
+                buttonVisibleText.visible = false;
+            } else {}
         }
     }
 }

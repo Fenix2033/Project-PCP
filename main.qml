@@ -64,6 +64,25 @@ Window {
         }
     }
 
+    Popup {
+        id: resourcesText
+        gameText: "You don't have enough resources"
+        visible: false
+    }
+
+    Button {
+        id: buttonVisibleText
+        title: "x"
+        state: "closeTextVisible"
+        visible: false
+        anchors {
+            left: buttonSkipTurn.right
+            top: buttonSkipTurn.bottom
+            leftMargin: 375
+            topMargin: 30
+        }
+    }
+
 
 }
 

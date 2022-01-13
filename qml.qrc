@@ -12,5 +12,6 @@
         <file>GameField.qml</file>
         <file>Button.qml</file>
         <file>PlayerResources.qml</file>
+        <file>Popup.qml</file>
     </qresource>
 </RCC>

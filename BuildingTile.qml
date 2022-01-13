@@ -58,10 +58,15 @@ Rectangle{
         anchors.fill: parent
         hoverEnabled: true
         onClicked: {
-            if (buildingTile.state === "placeForGold" && game.getResources(0) >= 200
-                 && game.getResources(1) >= 50 && game.getResources(2) >= 20){
-                buildingTile.state = "simpleGoldBuilding"
-                game.setBuilding(tileIndex, 2)
+            if (buildingTile.state === "placeForGold"){
+                if (game.getResources(0) >= 200
+                    && game.getResources(1) >= 50 && game.getResources(2) >= 20) {
+                        buildingTile.state = "simpleGoldBuilding"
+                        game.setBuilding(tileIndex, 2)
+                } else {
+                    resourcesText.visible = true;
+                    buttonVisibleText.visible = true;
+                }
 
             } else if (buildingTile.state === "placeForWood" && game.getResources(0) >= 300
                        && game.getResources(1) >= 30 && game.getResources(2) >= 40){
