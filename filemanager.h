@@ -19,7 +19,7 @@ public:
 
     static std::vector<Building> loadBuildings();
     static Player loadPlayer();
-    static void writeBuildings(int index, int buildingN);
+    static void writeBuildings(std::vector<Building> buildings);
     static void writePlayer(Player player);
     static void newGame();
 

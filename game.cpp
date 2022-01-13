@@ -27,7 +27,7 @@ int Game::getProfitResources(int index){
 void Game::setBuilding(int index, int buildingTyp){
     m_buildings.at(index).setType(buildingTyp);
     m_player.setBuilding(buildingTyp);
-    FileManager::writeBuildings(index, buildingTyp);
+    FileManager::writeBuildings(m_buildings);
     FileManager::writePlayer(m_player);
 }
 

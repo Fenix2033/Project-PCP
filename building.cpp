@@ -58,7 +58,8 @@ void Building::setType(int buildingType){
         m_price.at(1) = 1500;
         m_price.at(2) = 1000;
         break;
-//       default:  throw std::invalid_argument("Building type does not exist");
+      case 1: case 4: case 7: case 10: break;
+    default:  throw std::invalid_argument("Building type does not exist");
     }
 }
 

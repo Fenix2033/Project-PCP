@@ -15,7 +15,6 @@ Rectangle {
         columns: buildingSideCount
         spacing: 10
 
-
         Repeater{
             id: repeaterBuilding
             model: buildingSideCount*buildingSideCount

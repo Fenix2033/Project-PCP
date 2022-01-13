@@ -41,6 +41,9 @@ void Player::setBuilding(int buildingType){
           case 9:
             m_profitResources.at(2) += -5 + building->getProfit();
             break;
+          case 0:
+            std::cout << "You Win" << std::endl;
+            break;
            default:  throw std::invalid_argument("Building type does not exist");
         }
         delete building;

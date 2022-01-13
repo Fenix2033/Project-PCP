@@ -1,17 +1,10 @@
 #include "filemanager.h"
 
-FileManager::FileManager()
-{
-
-}
-
-std::vector<int> building(30, 0);
-std::vector<Building> m_buildings(30, Building());
-Player m_player;
+FileManager::FileManager(){}
 
 std::vector<Building> FileManager::loadBuildings(){
    QFile file(":/saveBuildings.xml");
-
+    std::vector<Building> buildings(25, Building());
     if (file.open(QIODevice::ReadOnly)){
 
         QXmlStreamReader xmlReader;
@@ -26,7 +19,7 @@ std::vector<Building> FileManager::loadBuildings(){
 
                     int index = xmlReader.attributes().value("index").toInt();
                     int buildingCount = xmlReader.readElementText().toInt();
-                    m_buildings.at(index).setType(buildingCount);
+                    buildings.at(index).setType(buildingCount);
                 } else if (name == "building"){
 
                 } else {
@@ -41,12 +34,13 @@ std::vector<Building> FileManager::loadBuildings(){
     }
 
     file.close();
-    return m_buildings;
+    return buildings;
 }
 
 Player FileManager::loadPlayer(){
 
     QFile file(":/savePlayer.xml");
+    Player player;
 
  if (file.open(QIODevice::ReadOnly)){
 
@@ -61,7 +55,7 @@ Player FileManager::loadPlayer(){
             QString name = xmlReader.name().toString();
             if (name == "resource"){
                 int resourceCount = xmlReader.readElementText().toInt();
-                m_player.loadResources(index, resourceCount);
+                player.loadResources(index, resourceCount);
                 index++;
             } else if (name == "Player"){
 
@@ -79,7 +73,7 @@ Player FileManager::loadPlayer(){
         QString name = xmlReader.name().toString();
         if (name == "resource"){
             int turnCount = xmlReader.readElementText().toInt();
-            m_player.loadTurn(turnCount);
+            player.loadTurn(turnCount);
         } else if (name == "Player"){
 
         } else {
@@ -97,7 +91,7 @@ Player FileManager::loadPlayer(){
             QString name = xmlReader.name().toString();
             if (name == "resource"){
                 int resourceProfitCount = xmlReader.readElementText().toInt();
-                m_player.loadResourcesProfit(index, resourceProfitCount);
+                player.loadResourcesProfit(index, resourceProfitCount);
                 index++;
             } else if (name == "Player"){
 
@@ -112,13 +106,11 @@ Player FileManager::loadPlayer(){
     qCritical() << "File is not open\n";
 }
 
-
      file.close();
-     return m_player;
+     return player;
 }
 
-void FileManager::writeBuildings(int index, int buildingN){
-    m_buildings.at(index).setType(buildingN);
+void FileManager::writeBuildings(std::vector<Building> buildings){
     QFile file("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
 
      if(file.open(QIODevice::WriteOnly)){
@@ -127,10 +119,10 @@ void FileManager::writeBuildings(int index, int buildingN){
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartDocument();
         xmlWriter.writeStartElement("building");
-        for (unsigned int i = 0; i < building.size(); i++){
+        for (unsigned int i = 0; i < buildings.size(); i++){
             xmlWriter.writeStartElement("field");
             xmlWriter.writeAttribute("index", QString::number(i));
-            xmlWriter.writeCharacters(QString::number(m_buildings.at(i).getType()));
+            xmlWriter.writeCharacters(QString::number(buildings.at(i).getType()));
             xmlWriter.writeEndElement();
         }
         xmlWriter.writeEndElement();
@@ -197,8 +189,8 @@ void FileManager::writePlayer(Player player){
 }
 
 void FileManager::newGame(){
-
     QFile fileNewField(":/newGameField.xml");
+    std::vector<Building> buildings(25, Building());
 
      if (fileNewField.open(QIODevice::ReadOnly)){
 
@@ -214,7 +206,7 @@ void FileManager::newGame(){
 
                      int index = xmlReader.attributes().value("index").toInt();
                      int buildingCount = xmlReader.readElementText().toInt();
-                     m_buildings.at(index).setType(buildingCount);
+                     buildings.at(index).setType(buildingCount);
                  } else if (name == "building"){
 
                  } else {
@@ -240,10 +232,10 @@ void FileManager::newGame(){
          xmlWriter.setAutoFormatting(true);
          xmlWriter.writeStartDocument();
          xmlWriter.writeStartElement("building");
-         for (unsigned int i = 0; i < building.size(); i++){
+         for (unsigned int i = 0; i < buildings.size(); i++){
              xmlWriter.writeStartElement("field");
              xmlWriter.writeAttribute("index", QString::number(i));
-             xmlWriter.writeCharacters(QString::number(m_buildings.at(i).getType()));
+             xmlWriter.writeCharacters(QString::number(buildings.at(i).getType()));
              xmlWriter.writeEndElement();
          }
          xmlWriter.writeEndElement();

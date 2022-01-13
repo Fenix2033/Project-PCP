@@ -69,8 +69,6 @@ Rectangle {
         anchors.leftMargin: 50
     }
 
-
-
     Image {
         id: updateGold
         source: "images/goldUpdate.png"
@@ -80,7 +78,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
     }
-
 
     Text {
         id: priceUpdateGold
@@ -102,7 +99,6 @@ Rectangle {
         anchors.leftMargin: 10
     }
 
-
     Text {
         id: priceUpdateWood
         text: "\n \n \n \n P: G: 700, W: 80, S: 100 +wood: 10"
@@ -122,7 +118,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
     }
-
 
     Text {
         id: priceUpdateStone
@@ -144,10 +139,9 @@ Rectangle {
         anchors.leftMargin: 10
     }
 
-
     Text {
         id: priceHome
-        text: "\n \n \n \n \n \n P: G: 2500, W: 800, S: 300 WIN"
+        text: "\n \n \n \n \n \n P: G: 5000, W: 1500, S: 1000 WIN"
         color: "white"
         font.bold: true
         font.pixelSize: 30

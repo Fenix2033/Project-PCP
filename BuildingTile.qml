@@ -76,9 +76,7 @@ Rectangle{
                     buildingTile.state = "home"
                     game.setBuilding(tileIndex, 0)
                     winText.visible = true
-                    gameField.visible = false;
                     buttonSkipTurn.visible = false;
-                    playerResources.visible = false;
                     priceBuilding.visible = false;
                     game.newGame();
             } else if (buildingTile.state === "updateGoldBuilding" || buildingTile.state === "updateWoodBuildin"
