@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Player>
-    <resource index="gold">2000</resource>
-    <resource index="wood">500</resource>
-    <resource index="stone">200</resource>
-    <resource index="turn">0</resource>
+    <resource index="gold">1000</resource>
+    <resource index="wood">300</resource>
+    <resource index="stone">165</resource>
+    <resource index="turn">2</resource>
     <resource index="profitGold">0</resource>
     <resource index="profitWood">0</resource>
-    <resource index="profitStone">0</resource>
+    <resource index="profitStone">10</resource>
 </Player>
