@@ -62,7 +62,8 @@ Rectangle {
 
         onClicked: {
             if (button.state === "newGame"){
-                game.newGame()
+                game.newGame();
+                game.gameExit();
             }
             else if (button.state === "exit"){
                 game.gameExit();
@@ -70,6 +71,14 @@ Rectangle {
             else if (button.state === "skipTurn"){
                 game.skipTurn();
                 playerResources.fillPlayer();
+                if (game.getTurn() > 150){
+                    lostText.visible = true
+                    gameField.visible = false;
+                    buttonSkipTurn.visible = false;
+                    playerResources.visible = false;
+                    priceBuilding.visible = false;
+                    game.newGame();
+                }
             }
             else if (button.state === "closeTextVisible"){
                 resourcesText.visible = false;

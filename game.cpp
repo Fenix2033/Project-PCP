@@ -39,7 +39,6 @@ void Game::skipTurn(){
 
 void Game::newGame(){
     FileManager::newGame();
-    exit(0);
 }
 
 void Game::gameExit(){

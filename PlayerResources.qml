@@ -46,7 +46,7 @@ Rectangle {
 
     Text {
         id: textTurn
-        text: "\n \n \n Turn: " + turn
+        text: "\n \n \n Turn: 150/" + turn
         color: "white"
         font.bold: true
         font.pixelSize: 30
@@ -100,7 +100,7 @@ Rectangle {
         textGold.text = "Gold: " + gold
         textWood.text = "\n Wood: " + wood
         textStone.text = "\n \n Stone: " + stone
-        textTurn.text = "\n \n \n Turn: " + turn
+        textTurn.text = "\n \n \n Turn: 150/" + turn
         textProfitGold.text = "\n \n \n \n Profit Gold: " + profitGold
         textProfitWood.text = "\n \n \n \n \n Profit Wood: " + profitWood
         textProfitStone.text = "\n \n \n \n \n \n Profit Stone: " + profitStone

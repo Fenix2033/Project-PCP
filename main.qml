@@ -86,6 +86,12 @@ Window {
         visible: false
     }
 
+    Popup {
+        id: lostText
+        gameText: "You lost"
+        visible: false
+    }
+
     Button {
         id: buttonVisibleText
         title: "x"
@@ -101,4 +107,3 @@ Window {
 
 
 }
-

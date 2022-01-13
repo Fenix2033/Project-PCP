@@ -1,4 +1,3 @@
-
 import QtQuick 2.0
 
 Rectangle{
@@ -36,6 +35,36 @@ Rectangle{
         id: stoneImg
         opacity: 0
         source: "images/stone.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
+    Image {
+        id: updateGoldImg
+        opacity: 0
+        source: "images/goldUpdate.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
+    Image {
+        id: updateWoodImg
+        opacity: 0
+        source: "images/woodUpdate.png"
+        width: parent.width-4
+        height: parent.height-4
+        anchors.centerIn: parent
+
+    }
+
+    Image {
+        id: updateStoneImg
+        opacity: 0
+        source: "images/stoneUpdate.png"
         width: parent.width-4
         height: parent.height-4
         anchors.centerIn: parent
@@ -127,6 +156,27 @@ Rectangle{
             }
         },
         State {
+            name: "updateGoldBuilding"
+            PropertyChanges {
+            target: updateGoldImg
+            opacity: 100
+            }
+        },
+        State {
+            name: "updateWoodBuilding"
+            PropertyChanges {
+            target: updateWoodImg
+            opacity: 100
+            }
+        },
+        State {
+            name: "updateStoneBuilding"
+            PropertyChanges {
+            target: updateStoneImg
+            opacity: 100
+            }
+        },
+        State {
             name: "home"
             PropertyChanges {
             target: homeImg
@@ -151,9 +201,9 @@ Rectangle{
         } else if (buildingCount === 7){
              state: "placeForStone"
        } else if (buildingCount === 8){
-            state: "simpleBuildingStone"
+            state: "simpleStoneBuilding"
        } else if (buildingCount === 9){
-            state: "updateBuildingStone"
+            state: "updateStoneBuilding"
        } else if (buildingCount === 10){
             state: "placeForHome"
        } else if (buildingCount === 0){
@@ -192,6 +242,30 @@ Rectangle{
                 } else {
                     visibileField()
                 }
+            } else if (buildingTile.state === "simpleGoldBuilding"){
+                if(game.getResources(0) >= 500
+                  && game.getResources(1) >= 100 && game.getResources(2) >= 75){
+                    buildingTile.state = "updateGoldBuilding"
+                    game.setBuilding(tileIndex, 3)
+                } else {
+                    visibileField()
+                }
+            } else if (buildingTile.state === "simpleWoodBuilding"){
+                if(game.getResources(0) >= 700
+                  && game.getResources(1) >= 80 && game.getResources(2) >= 100){
+                    buildingTile.state = "updateWoodBuilding"
+                    game.setBuilding(tileIndex, 6)
+                } else {
+                    visibileField()
+                }
+            } else if (buildingTile.state === "simpleStoneBuilding"){
+                if(game.getResources(0) >= 1000
+                  && game.getResources(1) >= 200 && game.getResources(2) >= 50){
+                    buildingTile.state = "updateStoneBuilding"
+                    game.setBuilding(tileIndex, 9)
+                } else {
+                    visibileField()
+                }
             } else if (buildingTile.state === "placeForHome"){
                 if(game.getResources(0) >= 2500
                   && game.getResources(1) >= 800 && game.getResources(2) >= 300){
@@ -201,6 +275,8 @@ Rectangle{
                     gameField.visible = false;
                     buttonSkipTurn.visible = false;
                     playerResources.visible = false;
+                    priceBuilding.visible = false;
+                    game.newGame();
             } else {
                     visibileField()
                 }
@@ -208,6 +284,16 @@ Rectangle{
             } else {
 
             }
+
+            if (game.getTurn() > 150){
+                lostText.visible = true
+                gameField.visible = false;
+                buttonSkipTurn.visible = false;
+                playerResources.visible = false;
+                priceBuilding.visible = false;
+                game.newGame();
+            }
+
             playerResources.fillPlayer()
         }
     }
@@ -223,5 +309,3 @@ Rectangle{
         priceBuilding.visible = false;
     }
 }
-
-
