@@ -3,6 +3,7 @@
 #include <iostream>
 #include <array>
 #include <QString>
+#include "errorloger.h"
 
 class Building
 {

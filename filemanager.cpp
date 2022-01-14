@@ -24,6 +24,7 @@ std::vector<Building> FileManager::loadBuildings(){
 
                 } else {
                     qCritical() << "Not element field" << name <<"\n";
+                    ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
                 }
             }
 
@@ -31,6 +32,7 @@ std::vector<Building> FileManager::loadBuildings(){
         }
     } else {
         qCritical() << "File is not open\n";
+        ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
     }
 
     file.close();
@@ -61,6 +63,7 @@ Player FileManager::loadPlayer(){
 
             } else {
                 qCritical() << "Not element field" << name <<"\n";
+                ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
             }
         }
 
@@ -78,6 +81,7 @@ Player FileManager::loadPlayer(){
 
         } else {
             qCritical() << "Not element field" << name <<"\n";
+            ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
         }
     }
 
@@ -97,13 +101,34 @@ Player FileManager::loadPlayer(){
 
             } else {
                 qCritical() << "Not element field" << name <<"\n";
+                ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
             }
         }
 
         xmlReader.readNext();
     }
+
+    xmlReader.readNext() - 1;
+
+    if (xmlReader.isStartElement()){
+        QString name = xmlReader.name().toString();
+        if (name == "resource"){
+            int scoreCount = xmlReader.readElementText().toInt();
+            player.loadScore(scoreCount);
+        } else if (name == "Player"){
+
+        } else {
+            qCritical() << "Not element field" << name <<"\n";
+            ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+        }
+    }
+
+
+
+
 } else {
     qCritical() << "File is not open\n";
+    ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
 }
 
      file.close();
@@ -128,6 +153,7 @@ void FileManager::writeBuildings(std::vector<Building> buildings){
         xmlWriter.writeEndElement();
     } else {
           qCritical() << "File is not open\n";
+          ErrorLoger::writeError("Class: FileManager. Method: writeBuilding. File is not open");
      }
 
      file.close();
@@ -179,10 +205,16 @@ void FileManager::writePlayer(Player player){
         xmlWriter.writeCharacters(QString::number(player.getProfitResources(2)));
         xmlWriter.writeEndElement();
 
+        xmlWriter.writeStartElement("resource");
+        xmlWriter.writeAttribute("index", "score");
+        xmlWriter.writeCharacters(QString::number(player.getScore()));
+        xmlWriter.writeEndElement();
+
         xmlWriter.writeEndElement();
 
     } else {
           qCritical() << "File is not open\n";
+          ErrorLoger::writeError("Class: FileManager. Method: writePlayer. File is not open");
      }
 
      file.close();
@@ -211,6 +243,7 @@ void FileManager::newGame(){
 
                  } else {
                      qCritical() << "Not element field" << name <<"\n";
+                     ErrorLoger::writeError("Class: FileManager. Method: newGame. Not element field");
                  }
              }
 
@@ -218,6 +251,7 @@ void FileManager::newGame(){
          }
      } else {
          qCritical() << "File is not open\n";
+         ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
      }
 
 
@@ -241,6 +275,7 @@ void FileManager::newGame(){
          xmlWriter.writeEndElement();
      } else {
            qCritical() << "File is not open\n";
+           ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
       }
 
       fileBuildings.close();
@@ -291,10 +326,16 @@ void FileManager::newGame(){
           xmlWriter.writeCharacters(QString::number(0));
           xmlWriter.writeEndElement();
 
+          xmlWriter.writeStartElement("resource");
+          xmlWriter.writeAttribute("index", "score");
+          xmlWriter.writeCharacters(QString::number(0));
+          xmlWriter.writeEndElement();
+
           xmlWriter.writeEndElement();
 
      } else {
            qCritical() << "File is not open\n";
+           ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
       }
 
       filePlayer.close();

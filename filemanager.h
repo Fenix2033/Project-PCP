@@ -11,6 +11,7 @@
 #include "game.h"
 #include "building.h"
 #include "player.h"
+#include "errorloger.h"
 
 class FileManager
 {

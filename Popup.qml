@@ -5,7 +5,6 @@ Rectangle{
     property string gameText: ""
 
     anchors.fill: parent
-    color: "lightgray"
     opacity: 0.8
 
     Rectangle {

@@ -6,7 +6,7 @@
 #include "filemanager.h"
 #include "building.h"
 #include "player.h"
-
+#include "errorloger.h"
 
 class Game : public QObject
 {
@@ -19,9 +19,13 @@ public:
     Q_INVOKABLE int getResources(int index);
     Q_INVOKABLE int getTurn();
     Q_INVOKABLE int getProfitResources(int index);
+    Q_INVOKABLE int getScore();
     Q_INVOKABLE void skipTurn();
     Q_INVOKABLE void gameExit();
     Q_INVOKABLE bool checkResources(int buildingType);
+    Q_INVOKABLE void market(int index);
+    Q_INVOKABLE void saveGame();
+
 signals:
 
 private:

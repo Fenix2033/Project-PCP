@@ -8,6 +8,7 @@ CONFIG += c++11
 
 SOURCES += \
         building.cpp \
+        errorloger.cpp \
         game.cpp \
         main.cpp \
         player.cpp \
@@ -16,7 +17,8 @@ SOURCES += \
 RESOURCES += qml.qrc \
              saveBuildings.xml \
              savePlayer.xml \
-             newGameField.xml
+             newGameField.xml \
+             ErrorLoger.txt
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -32,11 +34,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     building.h \
+    errorloger.h \
     game.h \
     player.h \
     filemanager.h
 
 DISTFILES += \
+    ErrorLoger.txt \
     newGameField.xml \
     saveBuildings.xml \
     savePlayer.xml

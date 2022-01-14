@@ -76,8 +76,11 @@ Rectangle{
                     buildingTile.state = "home"
                     game.setBuilding(tileIndex, 0)
                     winText.visible = true
-                    buttonSkipTurn.visible = false;
-                    priceBuilding.visible = false;
+                    visibileField();
+                    gameField.visible = true;
+                    playerResources.visible = true;
+                    buttonNewGame.visible = true;
+                    buttonExit.visible = true;
                     game.newGame();
             } else if (buildingTile.state === "updateGoldBuilding" || buildingTile.state === "updateWoodBuildin"
                        || buildingTile.state === "updateStoneBuilding"){
@@ -86,10 +89,11 @@ Rectangle{
 
             if (game.getTurn() > 150){
                 lostText.visible = true;
-                gameField.visible = false;
-                buttonSkipTurn.visible = false;
-                playerResources.visible = false;
-                priceBuilding.visible = false;
+                visibileField();
+                gameField.visible = true;
+                playerResources.visible = true;
+                buttonNewGame.visible = true;
+                buttonExit.visible = true;
                 game.newGame();
             }
 
@@ -106,6 +110,11 @@ Rectangle{
         buttonSkipTurn.visible = false;
         playerResources.visible = false;
         priceBuilding.visible = false;
+        buttonSaveGame.visible = false;
+        buttonBuyWood.visible = false;
+        buttonBuyStone.visible = false;
+        buttonSellWood.visible = false;
+        buttonSellStone.visible = false;
     }
 
     Image {

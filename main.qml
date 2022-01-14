@@ -26,9 +26,22 @@ Window {
             left: parent.left
             top: parent.top
             leftMargin: 0
-            topMargin: 100
+            topMargin: 0
         }
     }
+
+    Button {
+        id: buttonSaveGame
+        title: "Save"
+        state: "save"
+        anchors {
+            left: parent.left
+            top: buttonNewGame.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
 
     Button {
         id: buttonExit
@@ -36,7 +49,7 @@ Window {
         state: "exit"
         anchors {
             left: parent.left
-            top: buttonNewGame.bottom
+            top: buttonSaveGame.bottom
             leftMargin: 0
             topMargin: 0
         }
@@ -70,9 +83,59 @@ Window {
             right: parent.right
             top: parent.top
             leftMargin: 0
-            topMargin: 200
+            topMargin: 0
         }
     }
+
+    Button {
+        id: buttonSellWood
+        title: "Sell wood 10 for 80 gold"
+        state: "sellWood"
+        anchors {
+            right: parent.right
+            top: priceBuilding.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+    Button {
+        id: buttonSellStone
+        title: "Sell stone 10 for 80 gold"
+        state: "sellStone"
+        anchors {
+            right: parent.right
+            top: buttonSellWood.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+    Button {
+        id: buttonBuyWood
+        title: "Buy wood 10 for 100 gold"
+        state: "buyWood"
+        anchors {
+            right: parent.right
+            top: buttonSellStone.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+    Button {
+        id: buttonBuyStone
+        title: "Buy stone 10 for 100 gold"
+        state: "buyStone"
+        anchors {
+            right: parent.right
+            top: buttonBuyWood.bottom
+            leftMargin: 0
+            topMargin: 0
+        }
+    }
+
+
 
     Popup {
         id: resourcesText

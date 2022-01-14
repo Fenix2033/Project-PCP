@@ -21,13 +21,19 @@ Rectangle {
                 game.gameExit();
             } else if (button.state === "skipTurn"){
                 game.skipTurn();
-                playerResources.fillPlayer();
                 if (game.getTurn() > 150){
-                    lostText.visible = true
-                    gameField.visible = false;
+                    lostText.visible = true;
+                    gameField.visible = true;
+                    buttonNewGame.visible = true;
+                    buttonExit.visible = true;
                     buttonSkipTurn.visible = false;
                     playerResources.visible = false;
                     priceBuilding.visible = false;
+                    buttonSaveGame.visible = false;
+                    buttonBuyWood.visible = false;
+                    buttonBuyStone.visible = false;
+                    buttonSellWood.visible = false;
+                    buttonSellStone.visible = false;
                     game.newGame();
                 }
             } else if (button.state === "closeTextVisible"){
@@ -38,8 +44,26 @@ Rectangle {
                 buttonExit.visible = true;
                 buttonSkipTurn.visible = true;
                 playerResources.visible = true;
-                priceBuilding.visible = true
-            } else {}
+                priceBuilding.visible = true;
+                buttonSaveGame.visible = true;
+                buttonBuyWood.visible = true;
+                buttonBuyStone.visible = true;
+                buttonSellWood.visible = true;
+                buttonSellStone.visible = true;
+            } else if (button.state === "sellWood"){
+                game.market(1);
+            } else if (button.state === "sellStone"){
+                game.market(2);
+            } else if (button.state === "buyWood"){
+                game.market(3);
+            } else if (button.state === "buyStone"){
+                game.market(4);
+            } else if (button.state === "save"){
+                game.saveGame();
+            }
+
+            else {}
+            playerResources.fillPlayer();
         }
     }
 
@@ -84,7 +108,46 @@ Rectangle {
                 color: "red"
                 width: parent.width * 0.05
             }
+        },
+
+        State {
+            name: "sellWood"
+            PropertyChanges {
+                target: button
+                color: "gold"
         }
+      },
+
+        State {
+            name: "sellStone"
+            PropertyChanges {
+                target: button
+                color: "gold"
+        }
+      },
+
+        State {
+            name: "buyWood"
+            PropertyChanges {
+                target: button
+                color: "brown"
+        }
+      },
+
+        State {
+            name: "buyStone"
+            PropertyChanges {
+                target: button
+                color: "grey"
+        }
+      },
+        State {
+            name: "save"
+            PropertyChanges {
+                target: button
+                color: "darkgreen"
+        }
+      }
 
    ]
 }

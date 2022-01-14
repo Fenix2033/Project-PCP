@@ -19,6 +19,11 @@ int Game::getTurn(){
     return turn;
 }
 
+int Game::getScore(){
+    int score = m_player.getScore();
+    return score;
+}
+
 int Game::getProfitResources(int index){
     int resourceProfit = m_player.getProfitResources(index);
     return resourceProfit;
@@ -27,8 +32,6 @@ int Game::getProfitResources(int index){
 void Game::setBuilding(int index, int buildingTyp){
     m_buildings.at(index).setType(buildingTyp);
     m_player.setBuilding(buildingTyp);
-    FileManager::writeBuildings(m_buildings);
-    FileManager::writePlayer(m_player);
 }
 
 
@@ -47,4 +50,35 @@ void Game::gameExit(){
 bool Game::checkResources(int buildingType){
     bool check = m_player.checkResources(buildingType);
     return check;
+}
+
+void Game::saveGame(){
+    FileManager::writeBuildings(m_buildings);
+    FileManager::writePlayer(m_player);
+}
+
+void Game::market(int index){
+    try {
+        switch (index) {
+            case 1:
+            m_player.setResources(0, 80);
+            m_player.setResources(1, -10);
+            break;
+            case 2:
+            m_player.setResources(0, 80);
+            m_player.setResources(2, -10);
+            break;
+            case 3:
+            m_player.setResources(0, -100);
+            m_player.setResources(1, 10);
+            break;
+            case 4:
+            m_player.setResources(0, -100);
+            m_player.setResources(2, 10);
+            break;
+            default: throw std::invalid_argument("Market selection does not exist");
+        }
+    } catch (std::invalid_argument){
+            ErrorLoger::writeError("Class: Game. method: market. Market selection does not exist");
+        }
 }
