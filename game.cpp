@@ -82,3 +82,8 @@ void Game::market(int index){
             ErrorLoger::writeError("Class: Game. method: market. Market selection does not exist");
         }
 }
+
+void Game::setWinScore(){
+    int winScore = (150 - m_player.getTurn()) * 20;
+    m_player.setScore(winScore);
+}

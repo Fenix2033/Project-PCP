@@ -5,7 +5,8 @@ Rectangle{
     property string gameText: ""
 
     anchors.fill: parent
-    opacity: 0.8
+    color: "lightgray"
+    opacity: 0.5
 
     Rectangle {
         color: "black"
@@ -24,6 +25,14 @@ Rectangle{
 
         Text {
             id: winText
+            text: gameText
+            color: "white"
+            anchors.centerIn: parent
+            font.pixelSize: 26
+        }
+
+        Text {
+            id: lostText
             text: gameText
             color: "white"
             anchors.centerIn: parent

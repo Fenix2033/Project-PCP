@@ -34,7 +34,7 @@ void Player::setBuilding(int buildingType){
                 break;
               case 3:
                 m_profitResources.at(0) += -5 + building->getProfit();
-                m_score += 5;
+                m_score += 10;
                 break;
               case 5:
                 m_profitResources.at(1) += building->getProfit();
@@ -46,7 +46,7 @@ void Player::setBuilding(int buildingType){
                 break;
               case 8:
                 m_profitResources.at(2) += building->getProfit();
-                m_score += 10;
+                m_score += 5;
                 break;
               case 9:
                 m_profitResources.at(2) += -5 + building->getProfit();

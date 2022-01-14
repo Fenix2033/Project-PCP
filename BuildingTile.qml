@@ -77,7 +77,10 @@ Rectangle{
                     game.setBuilding(tileIndex, 0)
                     winText.visible = true
                     visibileField();
-                    gameField.visible = true;
+                    resourcesText.visible = false;
+                    buttonVisibleText.visible = false;
+                    game.setWinScore();
+                    playerResources.fillPlayer()
                     playerResources.visible = true;
                     buttonNewGame.visible = true;
                     buttonExit.visible = true;
@@ -90,10 +93,12 @@ Rectangle{
             if (game.getTurn() > 150){
                 lostText.visible = true;
                 visibileField();
-                gameField.visible = true;
+                gameField.visible = false;
+                buttonVisibleText.visible = false;
                 playerResources.visible = true;
                 buttonNewGame.visible = true;
                 buttonExit.visible = true;
+                resourcesText.visible = false;
                 game.newGame();
             }
 

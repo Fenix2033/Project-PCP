@@ -106,6 +106,7 @@ Rectangle {
         profitGold = game.getProfitResources(0)
         profitWood = game.getProfitResources(1)
         profitStone = game.getProfitResources(2)
+        score = game.getScore()
         textGold.text = " Gold: " + gold
         textWood.text = "\n Wood: " + wood
         textStone.text = "\n \n Stone: " + stone

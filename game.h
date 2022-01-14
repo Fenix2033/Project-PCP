@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE bool checkResources(int buildingType);
     Q_INVOKABLE void market(int index);
     Q_INVOKABLE void saveGame();
+    Q_INVOKABLE void setWinScore();
 
 signals:
 

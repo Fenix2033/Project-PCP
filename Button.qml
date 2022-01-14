@@ -23,14 +23,15 @@ Rectangle {
                 game.skipTurn();
                 if (game.getTurn() > 150){
                     lostText.visible = true;
-                    gameField.visible = true;
                     buttonNewGame.visible = true;
+                    gameField.visible = false;
                     buttonExit.visible = true;
                     buttonSkipTurn.visible = false;
                     playerResources.visible = false;
                     priceBuilding.visible = false;
                     buttonSaveGame.visible = false;
                     buttonBuyWood.visible = false;
+                    buttonVisibleText.visible = false;
                     buttonBuyStone.visible = false;
                     buttonSellWood.visible = false;
                     buttonSellStone.visible = false;
