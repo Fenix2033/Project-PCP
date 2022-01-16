@@ -62,20 +62,28 @@ void Game::market(int index){
     try {
         switch (index) {
             case 1:
-            m_player.setResources(0, 80);
-            m_player.setResources(1, -10);
+            if (m_player.getResources(1) >= 10){
+                m_player.setResources(0, 80);
+                m_player.setResources(1, -10);
+            }
             break;
             case 2:
-            m_player.setResources(0, 80);
-            m_player.setResources(2, -10);
+            if (m_player.getResources(2) >= 10){
+                m_player.setResources(0, 80);
+                m_player.setResources(2, -10);
+            }
             break;
             case 3:
-            m_player.setResources(0, -100);
-            m_player.setResources(1, 10);
+            if (m_player.getResources(0) >= 100){
+                m_player.setResources(0, -100);
+                m_player.setResources(1, 10);
+            }
             break;
             case 4:
-            m_player.setResources(0, -100);
-            m_player.setResources(2, 10);
+            if (m_player.getResources(1) >= 100){
+                m_player.setResources(0, -100);
+                m_player.setResources(2, 10);
+            }
             break;
             default: throw std::invalid_argument("Market selection does not exist");
         }

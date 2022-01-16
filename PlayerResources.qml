@@ -3,14 +3,14 @@ import QtQuick 2.0
 
 Rectangle {
     property string title: "Player"
-    property int gold: game.getResources(0)
-    property int wood: game.getResources(1)
-    property int stone: game.getResources(2)
-    property int turn: game.getTurn()
-    property int profitGold: game.getProfitResources(0)
-    property int profitWood: game.getProfitResources(1)
-    property int profitStone: game.getProfitResources(2)
-    property int score: game.getScore()
+    property int gold: game ? game.getResources(0) : 0
+    property int wood: game ? game.getResources(1) : 0
+    property int stone: game ? game.getResources(2) : 0
+    property int turn: game ? game.getTurn() : 0
+    property int profitGold: game ? game.getProfitResources(0) : 0
+    property int profitWood: game ? game.getProfitResources(1) : 0
+    property int profitStone: game ? game.getProfitResources(2) : 0
+    property int score: game ? game.getScore() : 0
 
     id: playerResources;
     color: "Blue"
@@ -99,14 +99,14 @@ Rectangle {
     }
 
     function fillPlayer(){
-        gold = game.getResources(0)
-        wood = game.getResources(1)
-        stone = game.getResources(2)
-        turn = game.getTurn()
-        profitGold = game.getProfitResources(0)
-        profitWood = game.getProfitResources(1)
-        profitStone = game.getProfitResources(2)
-        score = game.getScore()
+        gold = game ? game.getResources(0) : 0
+        wood = game ? game.getResources(1) : 0
+        stone = game ? game.getResources(2) : 0
+        turn = game ? game.getTurn() : 0
+        profitGold = game ? game.getProfitResources(0) : 0
+        profitWood = game ? game.getProfitResources(1) : 0
+        profitStone = game ? game.getProfitResources(2) : 0
+        score = game ? game.getScore() : 0
         textGold.text = " Gold: " + gold
         textWood.text = "\n Wood: " + wood
         textStone.text = "\n \n Stone: " + stone

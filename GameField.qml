@@ -23,7 +23,7 @@ Rectangle {
             BuildingTile{
                 id: repeaterBuildingTile
                 tileIndex: index
-                buildingCount: game.getBuildingCount(tileIndex)
+                buildingCount: game ? game.getBuildingCount(tileIndex) : 0
                 width: (gameField.width/buildingSideCount)-(buildingSpacing/(buildingSideCount-1)*buildingSideCount)
                 height: (gameField.height/buildingSideCount)-(buildingSpacing/(buildingSideCount-1)*buildingSideCount)
             }

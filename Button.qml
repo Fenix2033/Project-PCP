@@ -16,7 +16,7 @@ Rectangle {
         onClicked: {
             if (button.state === "newGame"){
                 game.newGame();
-                gameField.fillGrid();
+                game.gameExit();
             } else if (button.state === "exit"){
                 game.gameExit();
             } else if (button.state === "skipTurn"){
