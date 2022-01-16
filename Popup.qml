@@ -38,6 +38,7 @@ Rectangle{
             anchors.centerIn: parent
             font.pixelSize: 26
         }
+
     }
 
 }

@@ -6,7 +6,7 @@
 #include "filemanager.h"
 #include "building.h"
 #include "player.h"
-#include "errorloger.h"
+#include "errorlogger.h"
 
 class Game : public QObject
 {
@@ -32,6 +32,7 @@ signals:
 private:
     std::vector<Building> m_buildings;
     Player m_player;
+    ErrorLogger* m_errorLogger;
 public:
 };
 

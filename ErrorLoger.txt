@@ -1,26 +1,10 @@
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
-Building type does not exist
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open
+Class: FileManager. Method: writePlayer. File is not open

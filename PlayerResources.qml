@@ -116,7 +116,6 @@ Rectangle {
         textProfitStone.text = "\n \n \n \n \n \n Profit Stone: " + profitStone
         textScore.text = "\n \n \n \n \n \n \n Score: " + score
     }
-
-
 }
+
 

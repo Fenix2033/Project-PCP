@@ -8,7 +8,7 @@ CONFIG += c++11
 
 SOURCES += \
         building.cpp \
-        errorloger.cpp \
+        errorlogger.cpp \
         game.cpp \
         main.cpp \
         player.cpp \
@@ -34,7 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     building.h \
-    errorloger.h \
+    errorlogger.h \
     game.h \
     player.h \
     filemanager.h

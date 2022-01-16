@@ -24,7 +24,7 @@ std::vector<Building> FileManager::loadBuildings(){
 
                 } else {
                     qCritical() << "Not element field" << name <<"\n";
-                    ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+                    ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
                 }
             }
 
@@ -32,7 +32,7 @@ std::vector<Building> FileManager::loadBuildings(){
         }
     } else {
         qCritical() << "File is not open\n";
-        ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
+        ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
     }
 
     file.close();
@@ -63,7 +63,7 @@ Player FileManager::loadPlayer(){
 
             } else {
                 qCritical() << "Not element field" << name <<"\n";
-                ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+                ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
             }
         }
 
@@ -81,7 +81,7 @@ Player FileManager::loadPlayer(){
 
         } else {
             qCritical() << "Not element field" << name <<"\n";
-            ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+            ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
         }
     }
 
@@ -101,7 +101,7 @@ Player FileManager::loadPlayer(){
 
             } else {
                 qCritical() << "Not element field" << name <<"\n";
-                ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+                ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
             }
         }
 
@@ -119,7 +119,7 @@ Player FileManager::loadPlayer(){
 
         } else {
             qCritical() << "Not element field" << name <<"\n";
-            ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
+            ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. Not element field");
         }
     }
 
@@ -128,7 +128,7 @@ Player FileManager::loadPlayer(){
 
 } else {
     qCritical() << "File is not open\n";
-    ErrorLoger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
+    ErrorLogger::writeError("Class: FileManager. Method: loadPlayer. File is not open");
 }
 
      file.close();
@@ -136,7 +136,7 @@ Player FileManager::loadPlayer(){
 }
 
 void FileManager::writeBuildings(std::vector<Building> buildings){
-    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
+    QFile file("saveBuildings.xml");
 
      if(file.open(QIODevice::WriteOnly)){
 
@@ -153,16 +153,16 @@ void FileManager::writeBuildings(std::vector<Building> buildings){
         xmlWriter.writeEndElement();
     } else {
           qCritical() << "File is not open\n";
-          ErrorLoger::writeError("Class: FileManager. Method: writeBuilding. File is not open");
+          ErrorLogger::writeError("Class: FileManager. Method: writeBuilding. File is not open");
      }
 
      file.close();
 }
 
 void FileManager::writePlayer(Player player){
-    QFile file("/home/xkudla/Documents/Mendel/PCP/Project/savePlayer.xml");
+    QFile file("savePlayer.xml");
 
-     if(file.open(QIODevice::WriteOnly)){
+     if(file.open(QIODevice::WriteOnly | QIODevice::Text)){
 
         QXmlStreamWriter xmlWriter(&file);
         xmlWriter.setAutoFormatting(true);
@@ -214,7 +214,7 @@ void FileManager::writePlayer(Player player){
 
     } else {
           qCritical() << "File is not open\n";
-          ErrorLoger::writeError("Class: FileManager. Method: writePlayer. File is not open");
+          ErrorLogger::writeError("Class: FileManager. Method: writePlayer. File is not open");
      }
 
      file.close();
@@ -243,7 +243,7 @@ void FileManager::newGame(){
 
                  } else {
                      qCritical() << "Not element field" << name <<"\n";
-                     ErrorLoger::writeError("Class: FileManager. Method: newGame. Not element field");
+                     ErrorLogger::writeError("Class: FileManager. Method: newGame. Not element field");
                  }
              }
 
@@ -251,14 +251,14 @@ void FileManager::newGame(){
          }
      } else {
          qCritical() << "File is not open\n";
-         ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
+         ErrorLogger::writeError("Class: FileManager. Method: newGame. File is not open");
      }
 
 
 
      fileNewField.close();
 
-     QFile fileBuildings("/home/xkudla/Documents/Mendel/PCP/Project/saveBuildings.xml");
+     QFile fileBuildings("saveBuildings.xml");
 
       if(fileBuildings.open(QIODevice::WriteOnly)){
 
@@ -275,7 +275,7 @@ void FileManager::newGame(){
          xmlWriter.writeEndElement();
      } else {
            qCritical() << "File is not open\n";
-           ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
+           ErrorLogger::writeError("Class: FileManager. Method: newGame. File is not open");
       }
 
       fileBuildings.close();
@@ -335,7 +335,7 @@ void FileManager::newGame(){
 
      } else {
            qCritical() << "File is not open\n";
-           ErrorLoger::writeError("Class: FileManager. Method: newGame. File is not open");
+           ErrorLogger::writeError("Class: FileManager. Method: newGame. File is not open");
       }
 
       filePlayer.close();

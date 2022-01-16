@@ -5,6 +5,7 @@ Rectangle {
 
     property int buildingSideCount: 5
     property alias buildingSpacing: buildingGrid.spacing
+    id: gameField;
 
     color: "black"
 

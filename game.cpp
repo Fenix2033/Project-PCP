@@ -3,6 +3,7 @@
 Game::Game(QObject *parent) : QObject(parent){
     m_buildings = FileManager::loadBuildings();
     m_player = FileManager::loadPlayer();
+    m_errorLogger = ErrorLogger::getLogger();
 }
 
 int Game::getBuildingCount(int index){
@@ -79,7 +80,7 @@ void Game::market(int index){
             default: throw std::invalid_argument("Market selection does not exist");
         }
     } catch (std::invalid_argument){
-            ErrorLoger::writeError("Class: Game. method: market. Market selection does not exist");
+            ErrorLogger::writeError("Class: Game. method: market. Market selection does not exist");
         }
 }
 

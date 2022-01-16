@@ -16,49 +16,56 @@ Rectangle {
         onClicked: {
             if (button.state === "newGame"){
                 game.newGame();
-                game.gameExit();
+                gameField.fillGrid();
             } else if (button.state === "exit"){
                 game.gameExit();
             } else if (button.state === "skipTurn"){
                 game.skipTurn();
                 if (game.getTurn() > 150){
                     lostText.visible = true;
+                    visibleFalse();
                     buttonNewGame.visible = true;
-                    gameField.visible = false;
                     buttonExit.visible = true;
-                    buttonSkipTurn.visible = false;
-                    playerResources.visible = false;
-                    priceBuilding.visible = false;
-                    buttonSaveGame.visible = false;
-                    buttonBuyWood.visible = false;
-                    buttonVisibleText.visible = false;
-                    buttonBuyStone.visible = false;
-                    buttonSellWood.visible = false;
-                    buttonSellStone.visible = false;
                     game.newGame();
                 }
             } else if (button.state === "closeTextVisible"){
                 resourcesText.visible = false;
                 buttonVisibleText.visible = false;
-                gameField.visible = true;
-                buttonNewGame.visible = true;
-                buttonExit.visible = true;
-                buttonSkipTurn.visible = true;
-                playerResources.visible = true;
-                priceBuilding.visible = true;
-                buttonSaveGame.visible = true;
-                buttonBuyWood.visible = true;
-                buttonBuyStone.visible = true;
-                buttonSellWood.visible = true;
-                buttonSellStone.visible = true;
+                visibleTrue();
+
+
             } else if (button.state === "sellWood"){
-                game.market(1);
+                if (game.getResources(1) >= 10){
+                    game.market(1);
+                } else {
+                    visibleFalse();
+                    resourcesText.visible = true;
+                    buttonVisibleText.visible = true;
+                }
             } else if (button.state === "sellStone"){
-                game.market(2);
+                if (game.getResources(2) >= 10){
+                    game.market(2);
+                } else {
+                    visibleFalse();
+                    resourcesText.visible = true;
+                    buttonVisibleText.visible = true;
+                }
             } else if (button.state === "buyWood"){
-                game.market(3);
+                if (game.getResources(0) >= 80){
+                    game.market(3);
+                } else {
+                    visibleFalse();
+                    resourcesText.visible = true;
+                    buttonVisibleText.visible = true;
+                }
             } else if (button.state === "buyStone"){
-                game.market(4);
+                if (game.getResources(0) >= 80){
+                    game.market(4);
+                } else {
+                    visibleFalse();
+                    resourcesText.visible = true;
+                    buttonVisibleText.visible = true;
+                }
             } else if (button.state === "save"){
                 game.saveGame();
             }
@@ -151,4 +158,33 @@ Rectangle {
       }
 
    ]
+
+    function visibleFalse(){
+        buttonNewGame.visible = false;
+        gameField.visible = false;
+        buttonExit.visible = false;
+        buttonSkipTurn.visible = false;
+        playerResources.visible = false;
+        priceBuilding.visible = false;
+        buttonSaveGame.visible = false;
+        buttonBuyWood.visible = false;
+        buttonVisibleText.visible = false;
+        buttonBuyStone.visible = false;
+        buttonSellWood.visible = false;
+        buttonSellStone.visible = false;
+    }
+
+    function visibleTrue(){
+        gameField.visible = true;
+        buttonNewGame.visible = true;
+        buttonExit.visible = true;
+        buttonSkipTurn.visible = true;
+        playerResources.visible = true;
+        priceBuilding.visible = true;
+        buttonSaveGame.visible = true;
+        buttonBuyWood.visible = true;
+        buttonBuyStone.visible = true;
+        buttonSellWood.visible = true;
+        buttonSellStone.visible = true;
+    }
 }

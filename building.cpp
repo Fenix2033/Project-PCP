@@ -63,7 +63,7 @@ void Building::setType(int buildingType){
           default: throw std::invalid_argument("Building type does not exist");
         }
     } catch (std::invalid_argument){
-        ErrorLoger::writeError("Class: Building. method: setTupe. Building type does not exist");
+        ErrorLogger::writeError("Class: Building. method: setTupe. Building type does not exist");
     }
 
 }

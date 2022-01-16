@@ -6,7 +6,7 @@
 #include <QJsonObject>
 #include <array>
 #include "building.h"
-#include "errorloger.h"
+#include "errorlogger.h"
 
 class Player{
 private:

@@ -25,8 +25,8 @@ Window {
         anchors {
             left: parent.left
             top: parent.top
-            leftMargin: 0
-            topMargin: 0
+            leftMargin: 20
+            topMargin: 20
         }
     }
 
@@ -37,8 +37,8 @@ Window {
         anchors {
             left: parent.left
             top: buttonNewGame.bottom
-            leftMargin: 0
-            topMargin: 0
+            leftMargin: 20
+            topMargin: 20
         }
     }
 
@@ -50,8 +50,8 @@ Window {
         anchors {
             left: parent.left
             top: buttonSaveGame.bottom
-            leftMargin: 0
-            topMargin: 0
+            leftMargin: 20
+            topMargin: 20
         }
     }
 
@@ -62,8 +62,8 @@ Window {
         anchors {
             left: parent.left
             top: buttonExit.bottom
-            leftMargin: 0
-            topMargin: 0
+            leftMargin: 20
+            topMargin: 20
         }
     }
 
@@ -72,8 +72,8 @@ Window {
         anchors {
             left: parent.left
             top: buttonSkipTurn.bottom
-            leftMargin: 0
-            topMargin: 0
+            leftMargin: 20
+            topMargin: 20
         }
     }
 
@@ -82,8 +82,8 @@ Window {
         anchors {
             right: parent.right
             top: parent.top
-            leftMargin: 0
-            topMargin: 0
+            rightMargin: 20
+            topMargin: 20
         }
     }
 
@@ -94,8 +94,8 @@ Window {
         anchors {
             right: parent.right
             top: priceBuilding.bottom
-            leftMargin: 0
-            topMargin: 0
+            rightMargin: 20
+            topMargin: 20
         }
     }
 
@@ -106,8 +106,8 @@ Window {
         anchors {
             right: parent.right
             top: buttonSellWood.bottom
-            leftMargin: 0
-            topMargin: 0
+            rightMargin: 20
+            topMargin: 20
         }
     }
 
@@ -118,8 +118,8 @@ Window {
         anchors {
             right: parent.right
             top: buttonSellStone.bottom
-            leftMargin: 0
-            topMargin: 0
+            rightMargin: 20
+            topMargin: 20
         }
     }
 
@@ -130,8 +130,8 @@ Window {
         anchors {
             right: parent.right
             top: buttonBuyWood.bottom
-            leftMargin: 0
-            topMargin: 0
+            rightMargin: 20
+            topMargin: 20
         }
     }
 
@@ -155,6 +155,12 @@ Window {
         visible: false
     }
 
+    Popup {
+        id: exitText
+        gameText: "Are you sure you want to go out?"
+        visible: false
+    }
+
     Button {
         id: buttonVisibleText
         title: "x"
@@ -162,9 +168,9 @@ Window {
         visible: false
         anchors {
             left: buttonSkipTurn.right
-            top: buttonExit.bottom
+            top: buttonSaveGame.bottom
             leftMargin: 500
-            topMargin: 5
+            topMargin: 60
         }
     }
 

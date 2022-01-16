@@ -59,7 +59,7 @@ void Player::setBuilding(int buildingType){
                default:  throw std::invalid_argument("Building type does not exist");
             }
         } catch(std::invalid_argument){
-            ErrorLoger::writeError("Class: Player. method: setBuilding. Building type does not exist");
+            ErrorLogger::writeError("Class: Player. method: setBuilding. Building type does not exist");
         }
         delete building;
     }
