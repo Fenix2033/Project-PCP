@@ -13,7 +13,7 @@ Rectangle {
     property int score: game ? game.getScore() : 0
 
     id: playerResources;
-    color: "Blue"
+    color: "lightseagreen"
     width: parent.width * 0.2
     height: parent.height * 0.38
 

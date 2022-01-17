@@ -6,6 +6,8 @@ Window {
     width: 1900
     height: 720
     visible: true
+    color: "steelblue"
+
     title: qsTr("Game")
 
     GameField{

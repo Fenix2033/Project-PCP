@@ -1,17 +1,27 @@
 import QtQuick 2.0
 
 
+
 Rectangle {
+
     id: button
     property string title: ""
 
-    color: "black"
+    color: "lightseagreen"
     width: parent.width * 0.2
     height: parent.height * 0.1
 
     MouseArea{
         anchors.fill: parent
         hoverEnabled: true
+
+        onEntered: {
+            button.color = "springgreen"
+        }
+
+        onExited: {
+            button.color = "lightseagreen"
+        }
 
         onClicked: {
             if (button.state === "newGame"){
@@ -32,8 +42,6 @@ Rectangle {
                 resourcesText.visible = false;
                 buttonVisibleText.visible = false;
                 visibleTrue();
-
-
             } else if (button.state === "sellWood"){
                 if (game.getResources(1) >= 10){
                     game.market(1);
@@ -76,6 +84,7 @@ Rectangle {
     }
 
     Text {
+        id: buttonText
         text: button.title
         color: "white"
         font.bold: true
@@ -88,32 +97,31 @@ Rectangle {
         State {
             name: "newGame"
             PropertyChanges {
-                target: button
-                color: "black"
+                target: buttonText
+                color: "Blue"
             }
         },
 
         State {
             name: "exit"
             PropertyChanges {
-                target: button
-                color: "red"
+                target: buttonText
+                color: "Navy"
             }
         },
 
         State {
             name: "skipTurn"
             PropertyChanges {
-                target: button
-                color: "magenta"
-        }
+                target: buttonText
+                color: "Black"
+            }
       },
 
         State {
             name: "closeTextVisible"
             PropertyChanges {
                 target: button
-                color: "red"
                 width: parent.width * 0.05
             }
         },
@@ -121,40 +129,40 @@ Rectangle {
         State {
             name: "sellWood"
             PropertyChanges {
-                target: button
-                color: "gold"
-        }
+                target: buttonText
+                color: "Gold"
+            }
       },
 
         State {
             name: "sellStone"
             PropertyChanges {
-                target: button
-                color: "gold"
-        }
+                target: buttonText
+                color: "Gold"
+            }
       },
 
         State {
             name: "buyWood"
             PropertyChanges {
-                target: button
-                color: "brown"
-        }
+                target: buttonText
+                color: "Brown"
+            }
       },
 
         State {
             name: "buyStone"
             PropertyChanges {
-                target: button
-                color: "grey"
-        }
+                target: buttonText
+                color: "Grey"
+            }
       },
         State {
             name: "save"
             PropertyChanges {
-                target: button
-                color: "darkgreen"
-        }
+                target: buttonText
+                color: "Mediumblue"
+            }
       }
 
    ]
@@ -186,5 +194,9 @@ Rectangle {
         buttonBuyStone.visible = true;
         buttonSellWood.visible = true;
         buttonSellStone.visible = true;
+    }
+
+    function getColorState(){
+        return button.state
     }
 }

@@ -5,7 +5,7 @@ Rectangle {
     property string title: "PriceBuilding"
 
     id: priceBuilding;
-    color: "blue"
+    color: "lightseagreen"
     width: parent.width * 0.3
     height: parent.height * 0.4
 
