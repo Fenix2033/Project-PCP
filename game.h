@@ -26,6 +26,7 @@ public:
     Q_INVOKABLE void market(int index);
     Q_INVOKABLE void saveGame();
     Q_INVOKABLE void setWinScore();
+    Q_INVOKABLE Player getPlayer();
 
 signals:
 

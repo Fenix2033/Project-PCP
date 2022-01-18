@@ -54,7 +54,7 @@ Rectangle{
         anchors.fill: parent
         hoverEnabled: true
         onClicked: {
-            if (buildingTile.state === "placeForGold" && game.checkResources(2) === true){
+            if (buildingTile.state === "placeForGold" && game.getPlayer().checkResources(2) === true){
                 buildingTile.state = "simpleGoldBuilding";
                 game.setBuilding(tileIndex, 2);
             } else if (buildingTile.state === "placeForWood" && game.checkResources(5) === true){

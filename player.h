@@ -21,7 +21,6 @@ public:
     int getProfitResources(int index);
     int getScore();
     void setBuilding(int buildingType);
-    void setProfitResources(int index, int count);
     void setScore(int count);
     bool checkResources(int buildingType);
     void loadResources(int index, int resourceCount);

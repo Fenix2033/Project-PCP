@@ -37,7 +37,6 @@ void Game::setBuilding(int index, int buildingTyp){
 
 void Game::skipTurn(){
     m_player.skipTurn();
-    std::cout << "missed move" << std::endl;
 }
 
 void Game::newGame(){
@@ -98,4 +97,8 @@ void Game::market(int index){
 void Game::setWinScore(){
     int winScore = (150 - m_player.getTurn()) * 20;
     m_player.setScore(winScore);
+}
+
+Player Game::getPlayer(){
+    return m_player;
 }
