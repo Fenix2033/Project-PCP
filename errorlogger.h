@@ -12,6 +12,7 @@ public:
     static void writeError(std::string textError);
     void addError(std::string textError);
     void storeErrors();
+    void printErrors();
 private:
     ErrorLogger();
     void loadErrorrs();

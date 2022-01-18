@@ -3,7 +3,6 @@
 Game::Game(QObject *parent) : QObject(parent){
     m_buildings = FileManager::loadBuildings();
     m_player = FileManager::loadPlayer();
-    m_errorLogger = ErrorLogger::getLogger();
 }
 
 int Game::getBuildingCount(int index){
@@ -38,6 +37,7 @@ void Game::setBuilding(int index, int buildingTyp){
 
 void Game::skipTurn(){
     m_player.skipTurn();
+    std::cout << "missed move" << std::endl;
 }
 
 void Game::newGame(){
@@ -45,6 +45,8 @@ void Game::newGame(){
 }
 
 void Game::gameExit(){
+    m_errorLogger = ErrorLogger::getLogger();
+    m_errorLogger->printErrors();
     exit(0);
 }
 
@@ -56,6 +58,7 @@ bool Game::checkResources(int buildingType){
 void Game::saveGame(){
     FileManager::writeBuildings(m_buildings);
     FileManager::writePlayer(m_player);
+    std::cout << "Game saved" << std::endl;
 }
 
 void Game::market(int index){

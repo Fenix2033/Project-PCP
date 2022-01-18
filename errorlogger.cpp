@@ -40,3 +40,9 @@ void ErrorLogger::loadErrorrs(){
         file.close();
     }
 }
+
+void ErrorLogger::printErrors(){
+    for (int i = 0; i < m_errors.size(); i++){
+        std::cout << m_errors.at(i) << std::endl;
+    }
+}
