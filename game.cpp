@@ -98,7 +98,3 @@ void Game::setWinScore(){
     int winScore = (150 - m_player.getTurn()) * 20;
     m_player.setScore(winScore);
 }
-
-Player Game::getPlayer(){
-    return m_player;
-}

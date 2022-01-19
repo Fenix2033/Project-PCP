@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <building>
-    <field index="0">2</field>
+    <field index="0">1</field>
     <field index="1">4</field>
-    <field index="2">5</field>
+    <field index="2">4</field>
     <field index="3">4</field>
     <field index="4">1</field>
     <field index="5">7</field>
-    <field index="6">8</field>
+    <field index="6">7</field>
     <field index="7">7</field>
     <field index="8">7</field>
     <field index="9">7</field>

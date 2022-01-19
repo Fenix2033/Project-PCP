@@ -137,6 +137,7 @@ Rectangle {
         anchors.top: updateStone.bottom
         anchors.left: parent.left
         anchors.leftMargin: 10
+        anchors.topMargin: 8
     }
 
     Text {

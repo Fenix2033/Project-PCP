@@ -36,6 +36,7 @@ Rectangle {
                     visibleFalse();
                     buttonNewGame.visible = true;
                     buttonExit.visible = true;
+                    playerResources.visible = true;
                     game.newGame();
                 }
             } else if (button.state === "closeTextVisible"){
@@ -123,6 +124,10 @@ Rectangle {
             PropertyChanges {
                 target: button
                 width: parent.width * 0.05
+            }
+            PropertyChanges {
+                target: buttonText
+                color: "red"
             }
         },
 
